@@ -263,6 +263,7 @@ function App() {
               </svg>
             </div>
           </div>
+        </div>
       </section>
 
       {/* Simple Approach Section */}
