@@ -18,6 +18,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
   </head>
   <body>
+    <!-- Hidden form for Netlify Forms detection -->
+    <form name="booking" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="fullName" />
+      <input type="text" name="companyName" />
+      <input type="email" name="email" />
+      <input type="text" name="date" />
+      <input type="text" name="time" />
+      <textarea name="message"></textarea>
+    </form>
+    
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

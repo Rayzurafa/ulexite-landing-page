@@ -565,19 +565,35 @@ function App() {
             onSubmit={(e) => {
               e.preventDefault();
               if (bookingStep === 3 && bookingData.fullName && bookingData.companyName && bookingData.email && bookingData.agreeToPolicy) {
-                // Submit to Netlify
-                const form = e.target as HTMLFormElement;
+                // Encode form data for Netlify
+                const encode = (data: Record<string, string>) => {
+                  return Object.keys(data)
+                    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+                    .join('&');
+                };
+
                 fetch('/', {
                   method: 'POST',
                   headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                  body: new URLSearchParams(new FormData(form) as any).toString()
+                  body: encode({
+                    'form-name': 'booking',
+                    'fullName': bookingData.fullName,
+                    'companyName': bookingData.companyName,
+                    'email': bookingData.email,
+                    'date': bookingData.date,
+                    'time': bookingData.time,
+                    'message': bookingData.message
+                  })
                 })
                 .then(() => {
                   setShowConfirmation(true);
                   setBookingStep(1);
                   setBookingData({ date: '', time: '', fullName: '', companyName: '', email: '', message: '', agreeToPolicy: false });
                 })
-                .catch((error) => alert(error));
+                .catch((error) => {
+                  console.error('Form submission error:', error);
+                  alert('There was an error submitting your booking. Please try again.');
+                });
               }
             }}
             className="bg-gradient-to-br from-[#8fff00]/10 to-transparent border-2 border-[#8fff00]/30 rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 scroll-animate" 
