@@ -151,7 +151,7 @@ function App() {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-black/90 backdrop-blur-sm border-b border-gray-800 z-50">
+      <nav className={`fixed top-0 w-full bg-black/90 backdrop-blur-sm border-b border-gray-800 z-50 ${showPrivacyPolicy || showTermsOfService ? 'hidden' : ''}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
           <div className="flex items-center">
             <img src="/logovitter_(1).png" alt="Ulexite" className="h-6 sm:h-8 w-auto" />
@@ -165,6 +165,8 @@ function App() {
         </div>
       </nav>
 
+      {/* Main Content - Hide when modals are open */}
+      <div className={showPrivacyPolicy || showTermsOfService ? 'hidden' : ''}>
       {/* Hero Section */}
       <section className="pt-24 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
@@ -900,6 +902,8 @@ function App() {
           </div>
         </div>
       </footer>
+      </div>
+      {/* End Main Content */}
 
       {/* Privacy Policy Full-Screen Modal */}
       {showPrivacyPolicy && (
