@@ -1,5 +1,4 @@
 import { Mail } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
 function PrivacyPolicy() {
   return (
@@ -7,12 +6,12 @@ function PrivacyPolicy() {
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-black/90 backdrop-blur-sm border-b border-gray-800 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center">
+          <a href="/" className="flex items-center">
             <img src="/logovitter_(1).png" alt="Ulexite" className="h-6 sm:h-8 w-auto" />
-          </Link>
-          <Link to="/" className="bg-[#8fff00] text-black px-4 sm:px-6 py-2 text-sm sm:text-base rounded-md font-semibold hover:bg-[#7ae600] transition-all">
+          </a>
+          <a href="/" className="bg-[#8fff00] text-black px-4 sm:px-6 py-2 text-sm sm:text-base rounded-md font-semibold hover:bg-[#7ae600] transition-all">
             Back to Home
-          </Link>
+          </a>
         </div>
       </nav>
 
@@ -196,21 +195,21 @@ function PrivacyPolicy() {
 
             {/* Policy Links */}
             <div className="flex gap-4 sm:gap-6 md:w-1/3 justify-center md:justify-end">
-              <Link 
-                to="/privacy-policy" 
+              <a 
+                href="/privacy-policy.html" 
                 className="text-gray-400 hover:text-[#8fff00] transition-all text-sm relative group"
               >
                 Privacy Policy
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#8fff00] group-hover:w-full transition-all duration-300"></span>
-              </Link>
+              </a>
               <span className="text-gray-700">|</span>
-              <Link 
-                to="/terms-of-service" 
+              <a 
+                href="/terms-of-service.html" 
                 className="text-gray-400 hover:text-[#8fff00] transition-all text-sm relative group"
               >
                 Terms of Service
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#8fff00] group-hover:w-full transition-all duration-300"></span>
-              </Link>
+              </a>
             </div>
           </div>
         </div>

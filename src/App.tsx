@@ -1,13 +1,22 @@
-import { ArrowRight, Sparkles, MessageCircle, Lightbulb, Handshake, ArrowRight as ArrowForward, Bot, FileText, TrendingUp, Search, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, Sparkles, MessageCircle, Lightbulb, Handshake, ArrowRight as ArrowForward, Bot, FileText, TrendingUp, Search, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 
 function App() {
   const [openSolution, setOpenSolution] = useState<number>(0);
   const [openStoryModal, setOpenStoryModal] = useState<number | null>(null);
   const [bookingStep, setBookingStep] = useState<number>(1);
   const [showConfirmation, setShowConfirmation] = useState<boolean>(false);
+  const [showPrivacyPolicy, setShowPrivacyPolicy] = useState<boolean>(false);
+  const [showTermsOfService, setShowTermsOfService] = useState<boolean>(false);
   const [confirmedBooking, setConfirmedBooking] = useState<{ date: string; time: string; email: string }>({ date: '', time: '', email: '' });
+  
+  // Scroll to top when modals open
+  useEffect(() => {
+    if (showPrivacyPolicy || showTermsOfService) {
+      window.scrollTo(0, 0);
+    }
+  }, [showPrivacyPolicy, showTermsOfService]);
+  
   const [bookingData, setBookingData] = useState({
     date: '',
     time: '',
@@ -780,7 +789,7 @@ function App() {
                         }}
                       />
                       <span className="text-gray-400 text-sm sm:text-base group-hover:text-gray-300 transition-colors">
-                        I agree to the <Link to="/privacy-policy" className="text-[#8fff00] hover:underline">Privacy Policy</Link> and <Link to="/terms-of-service" className="text-[#8fff00] hover:underline">Terms of Service</Link>
+                        I agree to the <button type="button" onClick={(e) => { e.preventDefault(); setShowPrivacyPolicy(true); }} className="text-[#8fff00] hover:underline">Privacy Policy</button> and <button type="button" onClick={(e) => { e.preventDefault(); setShowTermsOfService(true); }} className="text-[#8fff00] hover:underline">Terms of Service</button>
                       </span>
                     </label>
                   </div>
@@ -872,25 +881,204 @@ function App() {
 
             {/* Policy Links */}
             <div className="flex gap-4 sm:gap-6 md:w-1/3 justify-center md:justify-end">
-              <Link 
-                to="/privacy-policy" 
+              <button 
+                onClick={() => setShowPrivacyPolicy(true)}
                 className="text-gray-400 hover:text-[#8fff00] transition-all text-sm relative group"
               >
                 Privacy Policy
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#8fff00] group-hover:w-full transition-all duration-300"></span>
-              </Link>
+              </button>
               <span className="text-gray-700">|</span>
-              <Link 
-                to="/terms-of-service" 
+              <button 
+                onClick={() => setShowTermsOfService(true)}
                 className="text-gray-400 hover:text-[#8fff00] transition-all text-sm relative group"
               >
                 Terms of Service
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#8fff00] group-hover:w-full transition-all duration-300"></span>
-              </Link>
+              </button>
             </div>
           </div>
         </div>
       </footer>
+
+      {/* Privacy Policy Full-Screen Modal */}
+      {showPrivacyPolicy && (
+        <div className="fixed inset-0 bg-black z-[100] overflow-y-auto">
+          <div className="min-h-screen">
+            {/* Header */}
+            <div className="sticky top-0 bg-black/95 backdrop-blur-sm border-b border-gray-800 z-10">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
+                <img src="/logovitter_(1).png" alt="Ulexite" className="h-6 sm:h-8 w-auto" />
+                <button 
+                  onClick={() => setShowPrivacyPolicy(false)}
+                  className="bg-[#8fff00] text-black px-4 sm:px-6 py-2 text-sm sm:text-base rounded-md font-semibold hover:bg-[#7ae600] transition-all flex items-center gap-2"
+                >
+                  <X className="w-4 h-4" />
+                  Close
+                </button>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="pt-8 sm:pt-12 pb-12 sm:pb-20 px-4 sm:px-6">
+              <div className="max-w-4xl mx-auto">
+                <div className="mb-8 sm:mb-12">
+                  <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">Privacy Policy</h1>
+                  <p className="text-sm sm:text-base text-gray-500">Last updated: January 13, 2026</p>
+                </div>
+
+                <div className="space-y-6 sm:space-y-12 text-sm sm:text-base text-gray-300 leading-relaxed">
+                  <section className="bg-gradient-to-br from-[#8fff00]/5 to-transparent border border-[#8fff00]/10 rounded-xl sm:rounded-2xl p-5 sm:p-8">
+                    <h2 className="text-xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">Introduction</h2>
+                    <p>At Ulexite ("we", "us", or "our"), we respect your privacy and are committed to protecting your personal data. This privacy policy explains how we collect, use, and safeguard your information when you visit our website and use our services.</p>
+                  </section>
+
+                  <section className="bg-gradient-to-br from-[#8fff00]/5 to-transparent border border-[#8fff00]/10 rounded-xl sm:rounded-2xl p-5 sm:p-8">
+                    <h2 className="text-xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">Information We Collect</h2>
+                    <p className="mb-3 sm:mb-4">When you book a consultation with us, we collect the following information:</p>
+                    <ul className="space-y-3 ml-4">
+                      <li className="flex items-start gap-3"><span className="text-[#8fff00] mt-1">→</span><span><strong className="text-white">Full Name:</strong> To identify you and personalize our communication</span></li>
+                      <li className="flex items-start gap-3"><span className="text-[#8fff00] mt-1">→</span><span><strong className="text-white">Company Name:</strong> To understand your business context</span></li>
+                      <li className="flex items-start gap-3"><span className="text-[#8fff00] mt-1">→</span><span><strong className="text-white">Email Address:</strong> To send you booking confirmations and communicate with you</span></li>
+                      <li className="flex items-start gap-3"><span className="text-[#8fff00] mt-1">→</span><span><strong className="text-white">Preferred Date and Time:</strong> To schedule your consultation</span></li>
+                      <li className="flex items-start gap-3"><span className="text-[#8fff00] mt-1">→</span><span><strong className="text-white">Optional Message:</strong> Any additional information you choose to share about your needs</span></li>
+                    </ul>
+                  </section>
+
+                  <section className="bg-gradient-to-br from-[#8fff00]/5 to-transparent border border-[#8fff00]/10 rounded-xl sm:rounded-2xl p-5 sm:p-8">
+                    <h2 className="text-xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">How We Use Your Information</h2>
+                    <p className="mb-3 sm:mb-4">We use the information we collect to:</p>
+                    <ul className="space-y-3 ml-4">
+                      <li className="flex items-start gap-3"><span className="text-[#8fff00] mt-1">→</span><span>Schedule and confirm your consultation appointments</span></li>
+                      <li className="flex items-start gap-3"><span className="text-[#8fff00] mt-1">→</span><span>Send you calendar invites and meeting reminders</span></li>
+                      <li className="flex items-start gap-3"><span className="text-[#8fff00] mt-1">→</span><span>Prepare for our conversations by understanding your business needs</span></li>
+                      <li className="flex items-start gap-3"><span className="text-[#8fff00] mt-1">→</span><span>Follow up with you regarding our services</span></li>
+                      <li className="flex items-start gap-3"><span className="text-[#8fff00] mt-1">→</span><span>Improve our services and website functionality</span></li>
+                      <li className="flex items-start gap-3"><span className="text-[#8fff00] mt-1">→</span><span>Comply with legal obligations</span></li>
+                    </ul>
+                  </section>
+
+                  <section className="bg-gradient-to-br from-[#8fff00]/5 to-transparent border border-[#8fff00]/10 rounded-xl sm:rounded-2xl p-5 sm:p-8">
+                    <h2 className="text-xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">Data Storage and Security</h2>
+                    <p>We take data security seriously. Your information is stored securely and is only accessible to authorized personnel who need it to provide our services. We implement appropriate technical and organizational measures to protect your personal data against unauthorized access, alteration, disclosure, or destruction.</p>
+                  </section>
+
+                  <section className="bg-gradient-to-br from-[#8fff00]/5 to-transparent border border-[#8fff00]/10 rounded-xl sm:rounded-2xl p-5 sm:p-8">
+                    <h2 className="text-xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">Data Sharing</h2>
+                    <p className="mb-3 sm:mb-4">We do not sell, trade, or rent your personal information to third parties. We may share your information only in the following circumstances:</p>
+                    <ul className="space-y-3 ml-4">
+                      <li className="flex items-start gap-3"><span className="text-[#8fff00] mt-1">→</span><span>With service providers who assist us in operating our website and conducting our business (e.g., email services, calendar tools)</span></li>
+                      <li className="flex items-start gap-3"><span className="text-[#8fff00] mt-1">→</span><span>When required by law or to protect our rights</span></li>
+                      <li className="flex items-start gap-3"><span className="text-[#8fff00] mt-1">→</span><span>With your explicit consent</span></li>
+                    </ul>
+                  </section>
+
+                  <section className="bg-gradient-to-br from-[#8fff00]/5 to-transparent border border-[#8fff00]/10 rounded-xl sm:rounded-2xl p-5 sm:p-8">
+                    <h2 className="text-xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">Your Rights</h2>
+                    <p className="mb-3 sm:mb-4">You have the right to:</p>
+                    <ul className="space-y-3 ml-4">
+                      <li className="flex items-start gap-3"><span className="text-[#8fff00] mt-1">→</span><span>Access the personal data we hold about you</span></li>
+                      <li className="flex items-start gap-3"><span className="text-[#8fff00] mt-1">→</span><span>Request correction of inaccurate data</span></li>
+                      <li className="flex items-start gap-3"><span className="text-[#8fff00] mt-1">→</span><span>Request deletion of your data</span></li>
+                      <li className="flex items-start gap-3"><span className="text-[#8fff00] mt-1">→</span><span>Object to processing of your data</span></li>
+                      <li className="flex items-start gap-3"><span className="text-[#8fff00] mt-1">→</span><span>Withdraw consent at any time</span></li>
+                    </ul>
+                  </section>
+
+                  <section className="bg-gradient-to-br from-[#8fff00]/5 to-transparent border border-[#8fff00]/10 rounded-xl sm:rounded-2xl p-5 sm:p-8">
+                    <h2 className="text-xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">Contact Us</h2>
+                    <p className="mb-3 sm:mb-4">If you have any questions about this privacy policy or how we handle your data, please contact us at:</p>
+                    <div className="bg-black/30 rounded-lg p-3 sm:p-4 border border-[#8fff00]/20">
+                      <p className="flex items-center gap-2 text-sm sm:text-base">
+                        <span className="text-white break-all">hello@ulexiteai.com</span>
+                      </p>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Terms of Service Full-Screen Modal */}
+      {showTermsOfService && (
+        <div className="fixed inset-0 bg-black z-[100] overflow-y-auto">
+          <div className="min-h-screen">
+            {/* Header */}
+            <div className="sticky top-0 bg-black/95 backdrop-blur-sm border-b border-gray-800 z-10">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
+                <img src="/logovitter_(1).png" alt="Ulexite" className="h-6 sm:h-8 w-auto" />
+                <button 
+                  onClick={() => setShowTermsOfService(false)}
+                  className="bg-[#8fff00] text-black px-4 sm:px-6 py-2 text-sm sm:text-base rounded-md font-semibold hover:bg-[#7ae600] transition-all flex items-center gap-2"
+                >
+                  <X className="w-4 h-4" />
+                  Close
+                </button>
+              </div>
+            </div>
+
+            {/* Content - Simplified Terms */}
+            <div className="pt-8 sm:pt-12 pb-12 sm:pb-20 px-4 sm:px-6">
+              <div className="max-w-4xl mx-auto">
+                <div className="mb-8 sm:mb-12">
+                  <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">Terms of Service</h1>
+                  <p className="text-sm sm:text-base text-gray-500">Last updated: January 13, 2026</p>
+                </div>
+
+                <div className="space-y-6 sm:space-y-12 text-sm sm:text-base text-gray-300 leading-relaxed">
+                  <section className="bg-gradient-to-br from-[#8fff00]/5 to-transparent border border-[#8fff00]/10 rounded-xl sm:rounded-2xl p-5 sm:p-8">
+                    <h2 className="text-xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">Acceptance of Terms</h2>
+                    <p>By accessing or using the Ulexite website and services, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.</p>
+                  </section>
+
+                  <section className="bg-gradient-to-br from-[#8fff00]/5 to-transparent border border-[#8fff00]/10 rounded-xl sm:rounded-2xl p-5 sm:p-8">
+                    <h2 className="text-xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">Services Description</h2>
+                    <p>Ulexite provides AI implementation and consulting services for businesses. We offer consultations, strategy development, and implementation support to help businesses integrate AI solutions.</p>
+                  </section>
+
+                  <section className="bg-gradient-to-br from-[#8fff00]/5 to-transparent border border-[#8fff00]/10 rounded-xl sm:rounded-2xl p-5 sm:p-8">
+                    <h2 className="text-xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">User Obligations</h2>
+                    <p className="mb-3 sm:mb-4">When using our services, you agree to:</p>
+                    <ul className="space-y-3 ml-4">
+                      <li className="flex items-start gap-3"><span className="text-[#8fff00] mt-1">→</span><span>Provide accurate and complete information</span></li>
+                      <li className="flex items-start gap-3"><span className="text-[#8fff00] mt-1">→</span><span>Use our services only for lawful purposes</span></li>
+                      <li className="flex items-start gap-3"><span className="text-[#8fff00] mt-1">→</span><span>Not interfere with or disrupt our services</span></li>
+                      <li className="flex items-start gap-3"><span className="text-[#8fff00] mt-1">→</span><span>Respect intellectual property rights</span></li>
+                    </ul>
+                  </section>
+
+                  <section className="bg-gradient-to-br from-[#8fff00]/5 to-transparent border border-[#8fff00]/10 rounded-xl sm:rounded-2xl p-5 sm:p-8">
+                    <h2 className="text-xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">Intellectual Property</h2>
+                    <p>All content on this website, including text, graphics, logos, and software, is the property of Ulexite and is protected by copyright laws. You may not reproduce, distribute, or create derivative works without our written permission.</p>
+                  </section>
+
+                  <section className="bg-gradient-to-br from-[#8fff00]/5 to-transparent border border-[#8fff00]/10 rounded-xl sm:rounded-2xl p-5 sm:p-8">
+                    <h2 className="text-xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">Limitation of Liability</h2>
+                    <p>Ulexite shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of our services. Our liability is limited to the maximum extent permitted by law.</p>
+                  </section>
+
+                  <section className="bg-gradient-to-br from-[#8fff00]/5 to-transparent border border-[#8fff00]/10 rounded-xl sm:rounded-2xl p-5 sm:p-8">
+                    <h2 className="text-xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">Modifications to Terms</h2>
+                    <p>We reserve the right to modify these Terms of Service at any time. We will notify users of significant changes by posting an updated version on this page. Your continued use of our services after such modifications constitutes acceptance of the updated terms.</p>
+                  </section>
+
+                  <section className="bg-gradient-to-br from-[#8fff00]/5 to-transparent border border-[#8fff00]/10 rounded-xl sm:rounded-2xl p-5 sm:p-8">
+                    <h2 className="text-xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">Contact Information</h2>
+                    <p className="mb-3 sm:mb-4">For questions about these Terms of Service, please contact us at:</p>
+                    <div className="bg-black/30 rounded-lg p-3 sm:p-4 border border-[#8fff00]/20">
+                      <p className="flex items-center gap-2 text-sm sm:text-base">
+                        <span className="text-white break-all">hello@ulexiteai.com</span>
+                      </p>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
     </div>
   );
