@@ -151,7 +151,7 @@ function App() {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Navigation */}
-      <nav className={`fixed top-0 w-full bg-black/90 backdrop-blur-sm border-b border-gray-800 z-50 ${showPrivacyPolicy || showTermsOfService ? 'hidden' : ''}`}>
+      <nav className="fixed top-0 w-full bg-black/90 backdrop-blur-sm border-b border-gray-800 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
           <div className="flex items-center">
             <img src="/logovitter_(1).png" alt="Ulexite" className="h-6 sm:h-8 w-auto" />
@@ -165,8 +165,6 @@ function App() {
         </div>
       </nav>
 
-      {/* Main Content - Hide when modals are open */}
-      <div className={showPrivacyPolicy || showTermsOfService ? 'hidden' : ''}>
       {/* Hero Section */}
       <section className="pt-24 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
@@ -902,8 +900,6 @@ function App() {
           </div>
         </div>
       </footer>
-      </div>
-      {/* End Main Content */}
 
       {/* Privacy Policy Full-Screen Modal */}
       {showPrivacyPolicy && (
@@ -924,8 +920,8 @@ function App() {
             </div>
 
             {/* Content */}
-            <div className="pt-8 sm:pt-12 pb-12 sm:pb-20 px-4 sm:px-6">
-              <div className="max-w-4xl mx-auto">
+            <div className="pt-8 sm:pt-12 pb-12 sm:pb-20 px-0 sm:px-6">
+              <div className="max-w-4xl mx-auto px-4 sm:px-0">
                 <div className="mb-8 sm:mb-12">
                   <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">Privacy Policy</h1>
                   <p className="text-sm sm:text-base text-gray-500">Last updated: January 13, 2026</p>
@@ -1024,8 +1020,8 @@ function App() {
             </div>
 
             {/* Content - Simplified Terms */}
-            <div className="pt-8 sm:pt-12 pb-12 sm:pb-20 px-4 sm:px-6">
-              <div className="max-w-4xl mx-auto">
+            <div className="pt-8 sm:pt-12 pb-12 sm:pb-20 px-0 sm:px-6">
+              <div className="max-w-4xl mx-auto px-4 sm:px-0">
                 <div className="mb-8 sm:mb-12">
                   <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">Terms of Service</h1>
                   <p className="text-sm sm:text-base text-gray-500">Last updated: January 13, 2026</p>
