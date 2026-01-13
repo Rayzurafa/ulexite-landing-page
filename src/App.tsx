@@ -6,6 +6,7 @@ function App() {
   const [openStoryModal, setOpenStoryModal] = useState<number | null>(null);
   const [bookingStep, setBookingStep] = useState<number>(1);
   const [showConfirmation, setShowConfirmation] = useState<boolean>(false);
+  const [confirmedBooking, setConfirmedBooking] = useState<{ date: string; time: string; email: string }>({ date: '', time: '', email: '' });
   const [bookingData, setBookingData] = useState({
     date: '',
     time: '',
@@ -586,6 +587,12 @@ function App() {
                   })
                 })
                 .then(() => {
+                  // Save booking details before clearing
+                  setConfirmedBooking({
+                    date: bookingData.date,
+                    time: bookingData.time,
+                    email: bookingData.email
+                  });
                   setShowConfirmation(true);
                   setBookingStep(1);
                   setBookingData({ date: '', time: '', fullName: '', companyName: '', email: '', message: '', agreeToPolicy: false });
@@ -826,11 +833,11 @@ function App() {
               </h3>
 
               <p className="text-base sm:text-lg text-gray-300 mb-6 sm:mb-8 leading-relaxed">
-                We've received your booking request for <span className="text-[#8fff00] font-semibold">{new Date(bookingData.date).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}</span> at <span className="text-[#8fff00] font-semibold">{bookingData.time}</span>.
+                We've received your booking request for <span className="text-[#8fff00] font-semibold">{new Date(confirmedBooking.date).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}</span> at <span className="text-[#8fff00] font-semibold">{confirmedBooking.time}</span>.
               </p>
 
               <p className="text-sm sm:text-base text-gray-400 mb-6 sm:mb-8">
-                We'll send a confirmation email to <span className="text-white break-all">{bookingData.email}</span> with all the details and a calendar invite.
+                We'll send a confirmation email to <span className="text-white break-all">{confirmedBooking.email}</span> with all the details and a calendar invite.
               </p>
 
               <button
