@@ -557,7 +557,42 @@ function App() {
             </p>
           </div>
 
-          <div className="bg-gradient-to-br from-[#8fff00]/10 to-transparent border-2 border-[#8fff00]/30 rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 scroll-animate" data-animation="animate-fade-in-up" data-delay="200">
+          <form 
+            name="booking" 
+            method="POST" 
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            onSubmit={(e) => {
+              e.preventDefault();
+              if (bookingStep === 3 && bookingData.fullName && bookingData.companyName && bookingData.email && bookingData.agreeToPolicy) {
+                // Submit to Netlify
+                const form = e.target as HTMLFormElement;
+                fetch('/', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                  body: new URLSearchParams(new FormData(form) as any).toString()
+                })
+                .then(() => {
+                  setShowConfirmation(true);
+                  setBookingStep(1);
+                  setBookingData({ date: '', time: '', fullName: '', companyName: '', email: '', message: '', agreeToPolicy: false });
+                })
+                .catch((error) => alert(error));
+              }
+            }}
+            className="bg-gradient-to-br from-[#8fff00]/10 to-transparent border-2 border-[#8fff00]/30 rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 scroll-animate" 
+            data-animation="animate-fade-in-up" 
+            data-delay="200"
+          >
+            {/* Hidden input for Netlify Forms */}
+            <input type="hidden" name="form-name" value="booking" />
+            {/* Honeypot field */}
+            <p className="hidden">
+              <label>
+                Don't fill this out if you're human: <input name="bot-field" />
+              </label>
+            </p>
+            
             <div className="flex items-center justify-center mb-8 sm:mb-12">
               {[1, 2, 3].map((step) => (
                 <div key={step} className="flex items-center">
@@ -592,6 +627,7 @@ function App() {
                       return (
                         <button
                           key={dateValue}
+                          type="button"
                           onClick={() => setBookingData({...bookingData, date: dateValue})}
                           className={`py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg font-semibold text-sm sm:text-base transition-all ${
                             bookingData.date === dateValue
@@ -606,6 +642,7 @@ function App() {
                   </div>
                 </div>
                 <button
+                  type="button"
                   onClick={() => bookingData.date && setBookingStep(2)}
                   disabled={!bookingData.date}
                   className="w-full bg-[#8fff00] text-black py-4 rounded-lg font-semibold text-lg hover:bg-[#7ae600] transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
@@ -627,6 +664,7 @@ function App() {
                     {['9:00 AM', '10:00 AM', '11:00 AM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM'].map((time) => (
                       <button
                         key={time}
+                        type="button"
                         onClick={() => setBookingData({...bookingData, time})}
                         className={`py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg font-semibold text-sm sm:text-base transition-all ${
                           bookingData.time === time
@@ -641,12 +679,14 @@ function App() {
                 </div>
                 <div className="flex gap-3">
                   <button
+                    type="button"
                     onClick={() => setBookingStep(1)}
                     className="w-full border-2 border-[#8fff00]/30 text-white py-4 rounded-lg font-semibold text-lg hover:border-[#8fff00] transition-all"
                   >
                     Back
                   </button>
                   <button
+                    type="button"
                     onClick={() => bookingData.time && setBookingStep(3)}
                     disabled={!bookingData.time}
                     className="w-full bg-[#8fff00] text-black py-4 rounded-lg font-semibold text-lg hover:bg-[#7ae600] transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
@@ -669,6 +709,7 @@ function App() {
                   <div className="space-y-4">
                     <input
                       type="text"
+                      name="fullName"
                       placeholder="Full Name"
                       value={bookingData.fullName}
                       onChange={(e) => setBookingData({...bookingData, fullName: e.target.value})}
@@ -676,6 +717,7 @@ function App() {
                     />
                     <input
                       type="text"
+                      name="companyName"
                       placeholder="Company Name"
                       value={bookingData.companyName}
                       onChange={(e) => setBookingData({...bookingData, companyName: e.target.value})}
@@ -683,12 +725,17 @@ function App() {
                     />
                     <input
                       type="email"
+                      name="email"
                       placeholder="Email Address"
                       value={bookingData.email}
                       onChange={(e) => setBookingData({...bookingData, email: e.target.value})}
                       className="w-full bg-black/50 border-2 border-[#8fff00]/30 rounded-lg px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base text-white placeholder-gray-500 focus:border-[#8fff00] focus:outline-none transition-all"
                     />
+                    {/* Hidden fields for date and time */}
+                    <input type="hidden" name="date" value={bookingData.date} />
+                    <input type="hidden" name="time" value={bookingData.time} />
                     <textarea
+                      name="message"
                       placeholder="Tell us briefly what you're looking to achieve (optional)"
                       value={bookingData.message}
                       onChange={(e) => setBookingData({...bookingData, message: e.target.value})}
@@ -717,17 +764,13 @@ function App() {
                 <div className="flex gap-3">
                   <button
                     onClick={() => setBookingStep(2)}
+                    type="button"
                     className="w-full border-2 border-[#8fff00]/30 text-white py-4 rounded-lg font-semibold text-lg hover:border-[#8fff00] transition-all"
                   >
                     Back
                   </button>
                   <button
-                    onClick={() => {
-                      if (bookingData.fullName && bookingData.companyName && bookingData.email && bookingData.agreeToPolicy) {
-                        console.log('Booking submitted:', bookingData);
-                        setShowConfirmation(true);
-                      }
-                    }}
+                    type="submit"
                     disabled={!bookingData.fullName || !bookingData.companyName || !bookingData.email || !bookingData.agreeToPolicy}
                     className="w-full bg-[#8fff00] text-black py-4 rounded-lg font-semibold text-lg hover:bg-[#7ae600] transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
@@ -737,7 +780,7 @@ function App() {
                 </div>
               </div>
             )}
-          </div>
+          </form>
         </div>
       </section>
 
