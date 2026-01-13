@@ -1,5 +1,6 @@
 import { ArrowRight, Sparkles, MessageCircle, Lightbulb, Handshake, ArrowRight as ArrowForward, Bot, FileText, TrendingUp, Search, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function App() {
   const [openSolution, setOpenSolution] = useState<number>(0);
@@ -779,7 +780,7 @@ function App() {
                         }}
                       />
                       <span className="text-gray-400 text-sm sm:text-base group-hover:text-gray-300 transition-colors">
-                        I agree to the <a href="/privacy-policy.html" className="text-[#8fff00] hover:underline">Privacy Policy</a> and <a href="/terms-of-service.html" className="text-[#8fff00] hover:underline">Terms of Service</a>
+                        I agree to the <Link to="/privacy-policy" className="text-[#8fff00] hover:underline">Privacy Policy</Link> and <Link to="/terms-of-service" className="text-[#8fff00] hover:underline">Terms of Service</Link>
                       </span>
                     </label>
                   </div>
@@ -871,21 +872,21 @@ function App() {
 
             {/* Policy Links */}
             <div className="flex gap-4 sm:gap-6 md:w-1/3 justify-center md:justify-end">
-              <a 
-                href="/privacy-policy.html" 
+              <Link 
+                to="/privacy-policy" 
                 className="text-gray-400 hover:text-[#8fff00] transition-all text-sm relative group"
               >
                 Privacy Policy
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#8fff00] group-hover:w-full transition-all duration-300"></span>
-              </a>
+              </Link>
               <span className="text-gray-700">|</span>
-              <a 
-                href="/terms-of-service.html" 
+              <Link 
+                to="/terms-of-service" 
                 className="text-gray-400 hover:text-[#8fff00] transition-all text-sm relative group"
               >
                 Terms of Service
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#8fff00] group-hover:w-full transition-all duration-300"></span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
