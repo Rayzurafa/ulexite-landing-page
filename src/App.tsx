@@ -906,7 +906,7 @@ function App() {
 
       {/* Privacy Policy Full-Screen Modal */}
       {showPrivacyPolicy && (
-        <div className="fixed inset-0 bg-black z-[100] overflow-y-auto w-full h-full">
+        <div className="fixed inset-0 bg-black z-[100] overflow-y-auto w-full h-full [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] sm:[&::-webkit-scrollbar]:block sm:[-ms-overflow-style:auto] sm:[scrollbar-width:auto]">
           <div className="min-h-screen w-full">
             {/* Header */}
             <div className="sticky top-0 bg-black/95 backdrop-blur-sm border-b border-gray-800 z-10">
@@ -1006,7 +1006,7 @@ function App() {
 
       {/* Terms of Service Full-Screen Modal */}
       {showTermsOfService && (
-        <div className="fixed inset-0 bg-black z-[100] overflow-y-auto w-full h-full">
+        <div className="fixed inset-0 bg-black z-[100] overflow-y-auto w-full h-full [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] sm:[&::-webkit-scrollbar]:block sm:[-ms-overflow-style:auto] sm:[scrollbar-width:auto]">
           <div className="min-h-screen w-full">
             {/* Header */}
             <div className="sticky top-0 bg-black/95 backdrop-blur-sm border-b border-gray-800 z-10">
