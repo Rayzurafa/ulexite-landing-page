@@ -14,6 +14,9 @@ function App() {
   useEffect(() => {
     if (showPrivacyPolicy || showTermsOfService) {
       window.scrollTo(0, 0);
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
     }
   }, [showPrivacyPolicy, showTermsOfService]);
   
@@ -903,8 +906,8 @@ function App() {
 
       {/* Privacy Policy Full-Screen Modal */}
       {showPrivacyPolicy && (
-        <div className="fixed inset-0 bg-black z-[100] overflow-y-auto">
-          <div className="min-h-screen">
+        <div className="fixed inset-0 bg-black z-[100] overflow-y-auto w-full h-full">
+          <div className="min-h-screen w-full">
             {/* Header */}
             <div className="sticky top-0 bg-black/95 backdrop-blur-sm border-b border-gray-800 z-10">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
@@ -1003,8 +1006,8 @@ function App() {
 
       {/* Terms of Service Full-Screen Modal */}
       {showTermsOfService && (
-        <div className="fixed inset-0 bg-black z-[100] overflow-y-auto">
-          <div className="min-h-screen">
+        <div className="fixed inset-0 bg-black z-[100] overflow-y-auto w-full h-full">
+          <div className="min-h-screen w-full">
             {/* Header */}
             <div className="sticky top-0 bg-black/95 backdrop-blur-sm border-b border-gray-800 z-10">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
