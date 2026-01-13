@@ -149,4 +149,16 @@
   .scroll-animate {
     opacity: 0;
   }
+
+  /* Hide scrollbar on mobile only */
+  @media (max-width: 639px) {
+    .hide-scrollbar-mobile::-webkit-scrollbar {
+      display: none;
+    }
+    
+    .hide-scrollbar-mobile {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  }
 }
