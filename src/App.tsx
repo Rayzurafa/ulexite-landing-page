@@ -98,7 +98,7 @@ function App() {
       id: 0,
       icon: MessageCircle,
       title: "Customer Support",
-      desc: "Handle customer inquiries instantly with AI that understands context and sentiment. Available 24/7, it resolves common issues automatically and escalates complex cases to your team only when human expertise is truly needed."
+      desc: "Handle customer inquiries instantly with AI that understands context and sentiment. Available 24/7, it resolves common issues automatically across voice and chat channels and escalates complex cases to your team only when human expertise is truly needed."
     },
     {
       id: 1,
