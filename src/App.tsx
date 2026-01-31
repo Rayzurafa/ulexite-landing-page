@@ -178,7 +178,7 @@ function App() {
             </div>
             <h1 className="text-4xl sm:text-7xl md:text-8xl font-bold mb-4 sm:mb-6 leading-tight tracking-tight animate-fade-in-up animation-delay-200">
               Your AI Department.{' '}
-              <span className="text-[#8fff00]">Without Hiring One.</span>
+              <span className="text-shimmer">Without Hiring One.</span>
             </h1>
             <p className="text-base sm:text-xl text-gray-400 mb-6 sm:mb-8 leading-relaxed max-w-3xl animate-fade-in animation-delay-400">
               We help traditional businesses actually use AI to cut costs and boost revenue.
