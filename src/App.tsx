@@ -189,40 +189,17 @@ function App() {
               </span>
             </h1>
             <p className="text-base sm:text-xl md:text-2xl text-gray-400 mb-6 sm:mb-10 leading-relaxed max-w-3xl lg:max-w-4xl animate-fade-in animation-delay-400">
-              We help traditional businesses actually use AI to cut costs and boost revenue.
-              No hype, no complicated tech jargon, just practical tools that seamlessly integrate with your existing workflow and deliver <span className="text-white font-semibold">measurable results</span>.
+              We help traditional businesses <span className="text-white font-semibold">actually use AI</span> to cut costs and boost revenue.
+              No hype, no complicated tech jargon, just <span className="text-white font-semibold">practical tools</span> that seamlessly integrate with your existing workflow and deliver <span className="text-white font-semibold">measurable results</span>.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 animate-fade-in animation-delay-600">
+            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in animation-delay-600">
               <button 
                 onClick={() => document.getElementById('booking-section')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-[#8fff00] text-black px-6 sm:px-10 py-3 sm:py-5 rounded-lg font-semibold text-base sm:text-lg hover:bg-[#7ae600] transition-all flex items-center justify-center gap-2 group shadow-[0_0_30px_rgba(143,255,0,0.3)] hover:shadow-[0_0_40px_rgba(143,255,0,0.5)] hover:scale-105 transform duration-300"
+                className="bg-[#8fff00] text-black px-6 sm:px-10 py-3 sm:py-5 rounded-lg font-semibold text-base sm:text-lg hover:bg-[#7ae600] transition-all flex items-center justify-center gap-2 group"
               >
                 Book Your Free Consultation
                 <ArrowRight className="w-4 sm:w-5 h-4 sm:h-5 group-hover:translate-x-1 transition-transform" />
               </button>
-              <button 
-                onClick={() => document.getElementById('solutions-section')?.scrollIntoView({ behavior: 'smooth' })}
-                className="hidden sm:flex border-2 border-gray-700 text-white px-10 py-5 rounded-lg font-semibold text-lg hover:border-[#8fff00] hover:bg-[#8fff00]/5 transition-all items-center justify-center gap-2 group"
-              >
-                See How It Works
-                <ArrowForward className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </div>
-
-            {/* Desktop Stats Banner */}
-            <div className="hidden sm:grid sm:grid-cols-3 gap-6 mt-16 lg:mt-20">
-              <div className="bg-gradient-to-br from-[#8fff00]/10 to-transparent border border-[#8fff00]/20 rounded-xl p-6 backdrop-blur-sm hover:border-[#8fff00]/40 transition-all duration-300">
-                <div className="text-4xl lg:text-5xl font-bold text-[#8fff00] mb-2">285%</div>
-                <div className="text-gray-400">Avg. Growth Increase</div>
-              </div>
-              <div className="bg-gradient-to-br from-[#8fff00]/10 to-transparent border border-[#8fff00]/20 rounded-xl p-6 backdrop-blur-sm hover:border-[#8fff00]/40 transition-all duration-300">
-                <div className="text-4xl lg:text-5xl font-bold text-[#8fff00] mb-2">60%</div>
-                <div className="text-gray-400">Cost Reduction</div>
-              </div>
-              <div className="bg-gradient-to-br from-[#8fff00]/10 to-transparent border border-[#8fff00]/20 rounded-xl p-6 backdrop-blur-sm hover:border-[#8fff00]/40 transition-all duration-300">
-                <div className="text-4xl lg:text-5xl font-bold text-[#8fff00] mb-2">2 Weeks</div>
-                <div className="text-gray-400">To First Results</div>
-              </div>
             </div>
 
             {/* Mobile Growth Graph */}
