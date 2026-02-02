@@ -169,45 +169,101 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 relative overflow-hidden">
+      <section className="pt-24 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 relative overflow-hidden sm:min-h-[calc(100vh-80px)] sm:flex sm:items-center">
         {/* Desktop background elements */}
         <div className="hidden sm:block absolute inset-0 pointer-events-none">
-          <div className="absolute top-20 right-10 w-96 h-96 bg-[#8fff00]/5 rounded-full blur-3xl"></div>
+          <div className="absolute top-20 right-10 w-96 h-96 bg-[#8fff00]/5 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-0 left-20 w-80 h-80 bg-[#8fff00]/3 rounded-full blur-3xl"></div>
+          {/* Grid pattern overlay */}
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(143,255,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(143,255,0,0.03)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]"></div>
         </div>
         
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="max-w-4xl sm:max-w-5xl lg:max-w-6xl">
-            <div className="inline-flex items-center gap-2 mb-4 sm:mb-6 px-3 sm:px-5 py-2 sm:py-2.5 bg-gradient-to-r from-[#8fff00]/10 to-[#8fff00]/5 backdrop-blur-sm border border-[#8fff00]/30 rounded-full shadow-[0_0_20px_rgba(143,255,0,0.15)] hover:shadow-[0_0_30px_rgba(143,255,0,0.25)] hover:border-[#8fff00]/50 transition-all duration-300 animate-fade-in">
-              <Sparkles className="w-3 sm:w-4 h-3 sm:h-4 text-[#8fff00]" />
-              <span className="text-[#8fff00] text-xs sm:text-sm font-semibold">AI Implementation Made Simple</span>
+        <div className="max-w-7xl mx-auto relative z-10 w-full">
+          <div className="sm:grid sm:grid-cols-12 sm:gap-8 sm:items-center">
+            {/* Left column - Content */}
+            <div className="sm:col-span-7 lg:col-span-6">
+              <div className="inline-flex items-center gap-2 mb-4 sm:mb-6 px-3 sm:px-5 py-2 sm:py-2.5 bg-gradient-to-r from-[#8fff00]/10 to-[#8fff00]/5 backdrop-blur-sm border border-[#8fff00]/30 rounded-full shadow-[0_0_20px_rgba(143,255,0,0.15)] hover:shadow-[0_0_30px_rgba(143,255,0,0.25)] hover:border-[#8fff00]/50 transition-all duration-300 animate-fade-in">
+                <Sparkles className="w-3 sm:w-4 h-3 sm:h-4 text-[#8fff00]" />
+                <span className="text-[#8fff00] text-xs sm:text-sm font-semibold">AI Implementation Made Simple</span>
+              </div>
+              <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-bold mb-4 sm:mb-6 leading-[1.1] tracking-tight animate-fade-in-up animation-delay-200">
+                Your AI Department.{' '}
+                <span className="bg-gradient-to-r from-[#8fff00] via-[#a0ff40] to-[#8fff00] bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
+                  Without Hiring One.
+                </span>
+              </h1>
+              <p className="sm:hidden text-base text-gray-400 mb-6 leading-relaxed animate-fade-in animation-delay-400">
+                We help traditional businesses actually use AI to cut costs and boost revenue.
+                No hype, no complicated tech jargon, just practical tools that seamlessly integrate with your existing workflow and deliver measurable results.
+              </p>
+              <p className="hidden sm:block text-lg md:text-xl text-gray-400 mb-6 sm:mb-8 leading-relaxed animate-fade-in animation-delay-400">
+                We help traditional businesses <span className="text-white font-semibold">actually use AI</span> to cut costs and boost revenue.
+                No hype, no complicated tech jargon, just practical tools that seamlessly <span className="text-white font-semibold">integrate</span> with your <span className="text-white font-semibold">existing workflow</span> and deliver measurable results.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 mb-6 sm:mb-8 animate-fade-in animation-delay-600">
+                <button 
+                  onClick={() => document.getElementById('booking-section')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="bg-[#8fff00] text-black px-6 sm:px-10 py-3 sm:py-5 rounded-lg font-semibold text-base sm:text-lg hover:bg-[#7ae600] transition-all flex items-center justify-center gap-2 group"
+                >
+                  Book Your Free Consultation
+                  <ArrowRight className="w-4 sm:w-5 h-4 sm:h-5 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+              
+              {/* Desktop trust indicators */}
+              <div className="hidden sm:flex items-center gap-6 text-sm text-gray-500 animate-fade-in animation-delay-800">
+                <div className="flex items-center gap-2">
+                  <div className="flex -space-x-2">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#8fff00] to-[#7ae600] border-2 border-black"></div>
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gray-700 to-gray-600 border-2 border-black"></div>
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#8fff00]/70 to-[#7ae600]/70 border-2 border-black"></div>
+                  </div>
+                  <span>Trusted by 50+ businesses</span>
+                </div>
+                <div className="w-px h-6 bg-gray-800"></div>
+                <div className="flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-[#8fff00]" />
+                  <span>2-week implementation</span>
+                </div>
+              </div>
             </div>
-            <h1 className="text-4xl sm:text-7xl md:text-8xl lg:text-[7rem] font-bold mb-4 sm:mb-8 leading-tight tracking-tight animate-fade-in-up animation-delay-200">
-              Your AI Department.{' '}
-              <span className="bg-gradient-to-r from-[#8fff00] via-[#a0ff40] to-[#8fff00] bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
-                Without Hiring One.
-              </span>
-            </h1>
-            <p className="sm:hidden text-base text-gray-400 mb-6 leading-relaxed animate-fade-in animation-delay-400">
-              We help traditional businesses actually use AI to cut costs and boost revenue.
-              No hype, no complicated tech jargon, just practical tools that seamlessly integrate with your existing workflow and deliver measurable results.
-            </p>
-            <p className="hidden sm:block text-xl md:text-2xl text-gray-400 mb-6 sm:mb-10 leading-relaxed max-w-3xl lg:max-w-4xl animate-fade-in animation-delay-400">
-              We help traditional businesses <span className="text-white font-semibold">actually use AI</span> to cut costs and boost revenue.
-              No hype, no complicated tech jargon, just practical tools that seamlessly <span className="text-white font-semibold">integrate</span> with your <span className="text-white font-semibold">existing workflow</span> and deliver measurable results.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in animation-delay-600">
-              <button 
-                onClick={() => document.getElementById('booking-section')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-[#8fff00] text-black px-6 sm:px-10 py-3 sm:py-5 rounded-lg font-semibold text-base sm:text-lg hover:bg-[#7ae600] transition-all flex items-center justify-center gap-2 group"
-              >
-                Book Your Free Consultation
-                <ArrowRight className="w-4 sm:w-5 h-4 sm:h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
+            
+            {/* Right column - Visual element (Desktop only) */}
+            <div className="hidden sm:block sm:col-span-5 lg:col-span-6 animate-fade-in animation-delay-400">
+              <div className="relative">
+                {/* Floating cards with stats */}
+                <div className="space-y-4">
+                  <div className="bg-gradient-to-br from-[#8fff00]/10 to-transparent border border-[#8fff00]/30 rounded-2xl p-6 backdrop-blur-sm hover:border-[#8fff00]/50 transition-all duration-300 transform hover:-translate-y-1">
+                    <div className="flex items-start justify-between mb-3">
+                      <TrendingUp className="w-8 h-8 text-[#8fff00]" />
+                      <span className="text-3xl font-bold text-[#8fff00]">+285%</span>
+                    </div>
+                    <p className="text-gray-400 text-sm">Average revenue growth with AI implementation</p>
+                  </div>
+                  
+                  <div className="bg-gradient-to-br from-[#8fff00]/10 to-transparent border border-[#8fff00]/30 rounded-2xl p-6 backdrop-blur-sm hover:border-[#8fff00]/50 transition-all duration-300 transform hover:-translate-y-1 ml-8">
+                    <div className="flex items-start justify-between mb-3">
+                      <Bot className="w-8 h-8 text-[#8fff00]" />
+                      <span className="text-3xl font-bold text-[#8fff00]">60%</span>
+                    </div>
+                    <p className="text-gray-400 text-sm">Reduction in operational costs</p>
+                  </div>
+                  
+                  <div className="bg-gradient-to-br from-[#8fff00]/10 to-transparent border border-[#8fff00]/30 rounded-2xl p-6 backdrop-blur-sm hover:border-[#8fff00]/50 transition-all duration-300 transform hover:-translate-y-1">
+                    <div className="flex items-start justify-between mb-3">
+                      <Lightbulb className="w-8 h-8 text-[#8fff00]" />
+                      <span className="text-3xl font-bold text-[#8fff00]">2 Weeks</span>
+                    </div>
+                    <p className="text-gray-400 text-sm">From consultation to first results</p>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
+        </div>
 
-            {/* Mobile Growth Graph */}
-            <div className="sm:hidden mt-11 scroll-animate" data-animation="animate-fade-in-up" data-delay="800">
+        {/* Mobile Growth Graph */}
+        <div className="sm:hidden mt-11 scroll-animate" data-animation="animate-fade-in-up" data-delay="800">
               <div className="text-center mb-4">
                 <h3 className="text-xl font-bold leading-tight">
                   <span className="text-white">Yearly Business Growth:</span><br />
