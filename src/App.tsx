@@ -260,91 +260,88 @@ function App() {
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Mobile Growth Graph */}
-        <div className="sm:hidden mt-11 scroll-animate" data-animation="animate-fade-in-up" data-delay="800">
-              <div className="text-center mb-4">
-                <h3 className="text-xl font-bold leading-tight">
-                  <span className="text-white">Yearly Business Growth:</span><br />
-                  <span className="text-[#8fff00]">AI</span> <span className="text-white">vs Traditional</span>
-                </h3>
-              </div>
-              
-              <svg viewBox="0 0 340 150" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
-                {/* Background gradient area */}
-                <defs>
-                  <linearGradient id="aiGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#8fff00" stopOpacity="0.1"/>
-                    <stop offset="100%" stopColor="#8fff00" stopOpacity="0"/>
-                  </linearGradient>
-                </defs>
-                
-                {/* Horizontal grid */}
-                <line x1="20" y1="130" x2="320" y2="130" stroke="#ffffff12" strokeWidth="1"/>
-                <line x1="20" y1="95" x2="320" y2="95" stroke="#ffffff06" strokeWidth="1" strokeDasharray="3 3"/>
-                <line x1="20" y1="60" x2="320" y2="60" stroke="#ffffff06" strokeWidth="1" strokeDasharray="3 3"/>
-                <line x1="20" y1="25" x2="320" y2="25" stroke="#ffffff06" strokeWidth="1" strokeDasharray="3 3"/>
-                
-                {/* Traditional business line (slow growth with subtle curve) */}
-                <path
-                  d="M 20 120 Q 57 117, 95 113 T 170 107 Q 207 105, 245 103 T 320 99"
-                  fill="none"
-                  stroke="#ffffff"
-                  strokeWidth="2.8"
-                  strokeLinecap="round"
-                  strokeDasharray="330"
-                  strokeDashoffset="330"
-                  className="animate-draw-line"
-                  style={{ animationDelay: '0.4s' }}
-                />
-                
-                {/* AI-powered business line (exponential growth with dynamic curves) */}
-                <path
-                  d="M 20 120 Q 50 110, 95 95 T 170 60 Q 205 43, 245 30 T 320 15"
-                  fill="none"
-                  stroke="#8fff00"
-                  strokeWidth="3.2"
-                  strokeLinecap="round"
-                  strokeDasharray="380"
-                  strokeDashoffset="380"
-                  className="animate-draw-line"
-                  style={{ animationDelay: '0.4s' }}
-                />
-                
-                {/* Glow effect for AI line */}
-                <path
-                  d="M 20 120 Q 50 110, 95 95 T 170 60 Q 205 43, 245 30 T 320 15"
-                  fill="none"
-                  stroke="#8fff00"
-                  strokeWidth="8"
-                  opacity="0.2"
-                  strokeLinecap="round"
-                  strokeDasharray="380"
-                  strokeDashoffset="380"
-                  className="animate-draw-line"
-                  style={{ animationDelay: '0.4s' }}
-                />
-                
-                {/* Fill under AI line */}
-                <path
-                  d="M 20 120 Q 50 110, 95 95 T 170 60 Q 205 43, 245 30 T 320 15 L 320 130 L 20 130 Z"
-                  fill="url(#aiGradient)"
-                />
-                
-                {/* Starting point marker */}
-                <circle cx="20" cy="120" r="4" fill="#ffffff" opacity="0.7"/>
-                
-                {/* End point - Traditional (appears after line animation) */}
-                <circle cx="320" cy="99" r="3.5" fill="#ffffff" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}/>
-                <text x="260" y="93" fill="#ffffff" fontSize="11" fontWeight="600" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}>+45%</text>
-                
-                {/* End point - AI (appears after line animation) */}
-                <circle cx="320" cy="15" r="4.5" fill="#8fff00" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}/>
-                <text x="255" y="12" fill="#8fff00" fontSize="12" fontWeight="700" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}>+285%</text>
-              </svg>
-            </div>
+          
+          {/* Mobile Growth Graph */}
+          <div className="sm:hidden mt-11 scroll-animate" data-animation="animate-fade-in-up" data-delay="800">
+          <div className="text-center mb-4">
+            <h3 className="text-xl font-bold leading-tight">
+              <span className="text-white">Yearly Business Growth:</span><br />
+              <span className="text-[#8fff00]">AI</span> <span className="text-white">vs Traditional</span>
+            </h3>
           </div>
+          
+          <svg viewBox="0 0 340 150" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+            {/* Background gradient area */}
+            <defs>
+              <linearGradient id="aiGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="#8fff00" stopOpacity="0.1"/>
+                <stop offset="100%" stopColor="#8fff00" stopOpacity="0"/>
+              </linearGradient>
+            </defs>
+            
+            {/* Horizontal grid */}
+            <line x1="20" y1="130" x2="320" y2="130" stroke="#ffffff12" strokeWidth="1"/>
+            <line x1="20" y1="95" x2="320" y2="95" stroke="#ffffff06" strokeWidth="1" strokeDasharray="3 3"/>
+            <line x1="20" y1="60" x2="320" y2="60" stroke="#ffffff06" strokeWidth="1" strokeDasharray="3 3"/>
+            <line x1="20" y1="25" x2="320" y2="25" stroke="#ffffff06" strokeWidth="1" strokeDasharray="3 3"/>
+            
+            {/* Traditional business line (slow growth with subtle curve) */}
+            <path
+              d="M 20 120 Q 57 117, 95 113 T 170 107 Q 207 105, 245 103 T 320 99"
+              fill="none"
+              stroke="#ffffff"
+              strokeWidth="2.8"
+              strokeLinecap="round"
+              strokeDasharray="330"
+              strokeDashoffset="330"
+              className="animate-draw-line"
+              style={{ animationDelay: '0.4s' }}
+            />
+            
+            {/* AI-powered business line (exponential growth with dynamic curves) */}
+            <path
+              d="M 20 120 Q 50 110, 95 95 T 170 60 Q 205 43, 245 30 T 320 15"
+              fill="none"
+              stroke="#8fff00"
+              strokeWidth="3.2"
+              strokeLinecap="round"
+              strokeDasharray="380"
+              strokeDashoffset="380"
+              className="animate-draw-line"
+              style={{ animationDelay: '0.4s' }}
+            />
+            
+            {/* Glow effect for AI line */}
+            <path
+              d="M 20 120 Q 50 110, 95 95 T 170 60 Q 205 43, 245 30 T 320 15"
+              fill="none"
+              stroke="#8fff00"
+              strokeWidth="8"
+              opacity="0.2"
+              strokeLinecap="round"
+              strokeDasharray="380"
+              strokeDashoffset="380"
+              className="animate-draw-line"
+              style={{ animationDelay: '0.4s' }}
+            />
+            
+            {/* Fill under AI line */}
+            <path
+              d="M 20 120 Q 50 110, 95 95 T 170 60 Q 205 43, 245 30 T 320 15 L 320 130 L 20 130 Z"
+              fill="url(#aiGradient)"
+            />
+            
+            {/* Starting point marker */}
+            <circle cx="20" cy="120" r="4" fill="#ffffff" opacity="0.7"/>
+            
+            {/* End point - Traditional (appears after line animation) */}
+            <circle cx="320" cy="99" r="3.5" fill="#ffffff" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}/>
+            <text x="260" y="93" fill="#ffffff" fontSize="11" fontWeight="600" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}>+45%</text>
+            
+            {/* End point - AI (appears after line animation) */}
+            <circle cx="320" cy="15" r="4.5" fill="#8fff00" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}/>
+            <text x="255" y="12" fill="#8fff00" fontSize="12" fontWeight="700" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}>+285%</text>
+          </svg>
         </div>
       </section>
 
