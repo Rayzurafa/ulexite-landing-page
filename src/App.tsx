@@ -196,8 +196,6 @@ function App() {
                 </button>
               </div>
 
-              </div>
-
             {/* Mobile Growth Graph - Bottom of text on mobile */}
             <div className="mt-11 md:hidden scroll-animate" data-animation="animate-fade-in-up" data-delay="800">
               <div className="text-center mb-4">
