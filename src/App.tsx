@@ -171,18 +171,18 @@ function App() {
       {/* Hero Section */}
       <section className="pt-24 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-            {/* Left: Content */}
-            <div className="max-w-4xl">
+          <div className="md:relative">
+            {/* Main Content */}
+            <div className="max-w-4xl md:max-w-2xl lg:max-w-3xl">
               <div className="inline-flex items-center gap-2 mb-4 sm:mb-6 px-3 sm:px-5 py-2 sm:py-2.5 bg-gradient-to-r from-[#8fff00]/10 to-[#8fff00]/5 backdrop-blur-sm border border-[#8fff00]/30 rounded-full shadow-[0_0_20px_rgba(143,255,0,0.15)] hover:shadow-[0_0_30px_rgba(143,255,0,0.25)] hover:border-[#8fff00]/50 transition-all duration-300 animate-fade-in">
                 <Sparkles className="w-3 sm:w-4 h-3 sm:h-4 text-[#8fff00]" />
                 <span className="text-[#8fff00] text-xs sm:text-sm font-semibold">AI Implementation Made Simple</span>
               </div>
-              <h1 className="text-4xl sm:text-7xl md:text-8xl font-bold mb-4 sm:mb-6 leading-tight tracking-tight animate-fade-in-up animation-delay-200">
+              <h1 className="text-4xl sm:text-7xl md:text-7xl lg:text-8xl font-bold mb-4 sm:mb-6 leading-tight tracking-tight animate-fade-in-up animation-delay-200">
                 Your AI Department.{' '}
                 <span className="text-[#8fff00]">Without Hiring One.</span>
               </h1>
-              <p className="text-base sm:text-xl text-gray-400 mb-6 sm:mb-8 leading-relaxed max-w-3xl animate-fade-in animation-delay-400">
+              <p className="text-base sm:text-xl text-gray-400 mb-6 sm:mb-8 leading-relaxed max-w-3xl md:max-w-xl lg:max-w-2xl animate-fade-in animation-delay-400">
                 We help traditional businesses actually use AI to cut costs and boost revenue.
                 No hype, no complicated tech jargon, just practical tools that seamlessly integrate with your existing workflow and deliver measurable results.
               </p>
@@ -280,11 +280,11 @@ function App() {
             </div>
             </div>
 
-            {/* Right: Desktop Growth Graph */}
-            <div className="hidden md:block scroll-animate" data-animation="animate-fade-in-up" data-delay="800">
-              <div className="text-center mb-6">
-                <h3 className="text-2xl lg:text-3xl font-bold leading-tight">
-                  <span className="text-white">Yearly Business Growth:</span><br />
+            {/* Desktop Growth Graph - Positioned on right side */}
+            <div className="hidden md:block md:absolute md:top-32 lg:top-28 md:right-0 md:w-[400px] lg:w-[480px] scroll-animate" data-animation="animate-fade-in-up" data-delay="800">
+              <div className="mb-4">
+                <h3 className="text-lg lg:text-xl font-bold leading-tight text-gray-300">
+                  <span className="text-white">Yearly Business Growth:</span>{' '}
                   <span className="text-[#8fff00]">AI</span> <span className="text-white">vs Traditional</span>
                 </h3>
               </div>
