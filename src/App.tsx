@@ -169,24 +169,22 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-24 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 relative overflow-hidden sm:min-h-[calc(100vh-80px)] sm:flex sm:items-center">
+      <section className="pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 relative overflow-hidden">
         {/* Desktop background elements */}
         <div className="hidden sm:block absolute inset-0 pointer-events-none">
-          <div className="absolute top-20 right-10 w-96 h-96 bg-[#8fff00]/5 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute top-20 right-10 w-96 h-96 bg-[#8fff00]/5 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 left-20 w-80 h-80 bg-[#8fff00]/3 rounded-full blur-3xl"></div>
-          {/* Grid pattern overlay */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(143,255,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(143,255,0,0.03)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]"></div>
         </div>
         
-        <div className="max-w-7xl mx-auto relative z-10 w-full">
-          <div className="sm:grid sm:grid-cols-12 sm:gap-8 sm:items-center">
-            {/* Left column - Content */}
-            <div className="sm:col-span-7 lg:col-span-6">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Column - Content */}
+            <div className="max-w-4xl sm:max-w-5xl lg:max-w-none">
               <div className="inline-flex items-center gap-2 mb-4 sm:mb-6 px-3 sm:px-5 py-2 sm:py-2.5 bg-gradient-to-r from-[#8fff00]/10 to-[#8fff00]/5 backdrop-blur-sm border border-[#8fff00]/30 rounded-full shadow-[0_0_20px_rgba(143,255,0,0.15)] hover:shadow-[0_0_30px_rgba(143,255,0,0.25)] hover:border-[#8fff00]/50 transition-all duration-300 animate-fade-in">
                 <Sparkles className="w-3 sm:w-4 h-3 sm:h-4 text-[#8fff00]" />
                 <span className="text-[#8fff00] text-xs sm:text-sm font-semibold">AI Implementation Made Simple</span>
               </div>
-              <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-bold mb-4 sm:mb-6 leading-[1.1] tracking-tight animate-fade-in-up animation-delay-200">
+              <h1 className="text-4xl sm:text-7xl md:text-8xl lg:text-7xl font-bold mb-4 sm:mb-8 leading-tight tracking-tight animate-fade-in-up animation-delay-200">
                 Your AI Department.{' '}
                 <span className="bg-gradient-to-r from-[#8fff00] via-[#a0ff40] to-[#8fff00] bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
                   Without Hiring One.
@@ -196,11 +194,11 @@ function App() {
                 We help traditional businesses actually use AI to cut costs and boost revenue.
                 No hype, no complicated tech jargon, just practical tools that seamlessly integrate with your existing workflow and deliver measurable results.
               </p>
-              <p className="hidden sm:block text-lg md:text-xl text-gray-400 mb-6 sm:mb-8 leading-relaxed animate-fade-in animation-delay-400">
+              <p className="hidden sm:block text-xl md:text-2xl text-gray-400 mb-6 sm:mb-10 leading-relaxed animate-fade-in animation-delay-400">
                 We help traditional businesses <span className="text-white font-semibold">actually use AI</span> to cut costs and boost revenue.
                 No hype, no complicated tech jargon, just practical tools that seamlessly <span className="text-white font-semibold">integrate</span> with your <span className="text-white font-semibold">existing workflow</span> and deliver measurable results.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 mb-6 sm:mb-8 animate-fade-in animation-delay-600">
+              <div className="flex flex-col sm:flex-row gap-4 animate-fade-in animation-delay-600">
                 <button 
                   onClick={() => document.getElementById('booking-section')?.scrollIntoView({ behavior: 'smooth' })}
                   className="bg-[#8fff00] text-black px-6 sm:px-10 py-3 sm:py-5 rounded-lg font-semibold text-base sm:text-lg hover:bg-[#7ae600] transition-all flex items-center justify-center gap-2 group"
@@ -209,142 +207,166 @@ function App() {
                   <ArrowRight className="w-4 sm:w-5 h-4 sm:h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
-              
-              {/* Desktop trust indicators */}
-              <div className="hidden sm:flex items-center gap-6 text-sm text-gray-500 animate-fade-in animation-delay-800">
-                <div className="flex items-center gap-2">
-                  <div className="flex -space-x-2">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#8fff00] to-[#7ae600] border-2 border-black"></div>
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gray-700 to-gray-600 border-2 border-black"></div>
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#8fff00]/70 to-[#7ae600]/70 border-2 border-black"></div>
-                  </div>
-                  <span>Trusted by 50+ businesses</span>
-                </div>
-                <div className="w-px h-6 bg-gray-800"></div>
-                <div className="flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-[#8fff00]" />
-                  <span>2-week implementation</span>
-                </div>
-              </div>
             </div>
-            
-            {/* Right column - Visual element (Desktop only) */}
-            <div className="hidden sm:block sm:col-span-5 lg:col-span-6 animate-fade-in animation-delay-400">
+
+            {/* Right Column - Visual Element (Desktop Only) */}
+            <div className="hidden lg:block relative animate-fade-in animation-delay-400">
               <div className="relative">
-                {/* Floating cards with stats */}
-                <div className="space-y-4">
-                  <div className="bg-gradient-to-br from-[#8fff00]/10 to-transparent border border-[#8fff00]/30 rounded-2xl p-6 backdrop-blur-sm hover:border-[#8fff00]/50 transition-all duration-300 transform hover:-translate-y-1">
-                    <div className="flex items-start justify-between mb-3">
-                      <TrendingUp className="w-8 h-8 text-[#8fff00]" />
-                      <span className="text-3xl font-bold text-[#8fff00]">+285%</span>
-                    </div>
-                    <p className="text-gray-400 text-sm">Average revenue growth with AI implementation</p>
+                {/* Main visual container */}
+                <div className="relative bg-gradient-to-br from-[#8fff00]/10 via-transparent to-[#8fff00]/5 border border-[#8fff00]/20 rounded-2xl p-8 backdrop-blur-sm">
+                  {/* Animated rings */}
+                  <div className="absolute inset-0 rounded-2xl">
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 border-2 border-[#8fff00]/20 rounded-full animate-ping" style={{ animationDuration: '3s' }}></div>
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 border-2 border-[#8fff00]/30 rounded-full animate-pulse"></div>
                   </div>
                   
-                  <div className="bg-gradient-to-br from-[#8fff00]/10 to-transparent border border-[#8fff00]/30 rounded-2xl p-6 backdrop-blur-sm hover:border-[#8fff00]/50 transition-all duration-300 transform hover:-translate-y-1 ml-8">
-                    <div className="flex items-start justify-between mb-3">
-                      <Bot className="w-8 h-8 text-[#8fff00]" />
-                      <span className="text-3xl font-bold text-[#8fff00]">60%</span>
+                  {/* Content */}
+                  <div className="relative z-10 space-y-6">
+                    {/* AI Brain Icon */}
+                    <div className="flex justify-center mb-8">
+                      <div className="relative">
+                        <Bot className="w-24 h-24 text-[#8fff00]" strokeWidth={1.5} />
+                        <div className="absolute -top-2 -right-2 w-6 h-6 bg-[#8fff00] rounded-full animate-pulse flex items-center justify-center">
+                          <Sparkles className="w-4 h-4 text-black" />
+                        </div>
+                      </div>
                     </div>
-                    <p className="text-gray-400 text-sm">Reduction in operational costs</p>
-                  </div>
-                  
-                  <div className="bg-gradient-to-br from-[#8fff00]/10 to-transparent border border-[#8fff00]/30 rounded-2xl p-6 backdrop-blur-sm hover:border-[#8fff00]/50 transition-all duration-300 transform hover:-translate-y-1">
-                    <div className="flex items-start justify-between mb-3">
-                      <Lightbulb className="w-8 h-8 text-[#8fff00]" />
-                      <span className="text-3xl font-bold text-[#8fff00]">2 Weeks</span>
+                    
+                    {/* Stats Grid */}
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="bg-black/40 rounded-xl p-4 border border-[#8fff00]/10">
+                        <div className="text-3xl font-bold text-[#8fff00] mb-1">285%</div>
+                        <div className="text-xs text-gray-400">Growth Increase</div>
+                      </div>
+                      <div className="bg-black/40 rounded-xl p-4 border border-[#8fff00]/10">
+                        <div className="text-3xl font-bold text-[#8fff00] mb-1">60%</div>
+                        <div className="text-xs text-gray-400">Cost Reduction</div>
+                      </div>
+                      <div className="bg-black/40 rounded-xl p-4 border border-[#8fff00]/10">
+                        <div className="text-3xl font-bold text-[#8fff00] mb-1">2 Weeks</div>
+                        <div className="text-xs text-gray-400">First Results</div>
+                      </div>
+                      <div className="bg-black/40 rounded-xl p-4 border border-[#8fff00]/10">
+                        <div className="text-3xl font-bold text-[#8fff00] mb-1">24/7</div>
+                        <div className="text-xs text-gray-400">AI Support</div>
+                      </div>
                     </div>
-                    <p className="text-gray-400 text-sm">From consultation to first results</p>
+                    
+                    {/* Process flow */}
+                    <div className="space-y-3 pt-4">
+                      <div className="flex items-center gap-3 text-sm">
+                        <div className="w-8 h-8 rounded-full bg-[#8fff00]/20 border border-[#8fff00]/40 flex items-center justify-center flex-shrink-0">
+                          <span className="text-[#8fff00] font-bold">1</span>
+                        </div>
+                        <span className="text-gray-300">Analyze Your Workflow</span>
+                      </div>
+                      <div className="flex items-center gap-3 text-sm">
+                        <div className="w-8 h-8 rounded-full bg-[#8fff00]/20 border border-[#8fff00]/40 flex items-center justify-center flex-shrink-0">
+                          <span className="text-[#8fff00] font-bold">2</span>
+                        </div>
+                        <span className="text-gray-300">Build Custom AI Tools</span>
+                      </div>
+                      <div className="flex items-center gap-3 text-sm">
+                        <div className="w-8 h-8 rounded-full bg-[#8fff00]/20 border border-[#8fff00]/40 flex items-center justify-center flex-shrink-0">
+                          <span className="text-[#8fff00] font-bold">3</span>
+                        </div>
+                        <span className="text-gray-300">See Measurable Results</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
+                
+                {/* Floating elements */}
+                <div className="absolute -top-4 -left-4 w-20 h-20 bg-[#8fff00]/20 rounded-full blur-2xl animate-pulse"></div>
+                <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-[#8fff00]/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '1s' }}></div>
               </div>
             </div>
           </div>
-          
+
           {/* Mobile Growth Graph */}
-          <div className="sm:hidden mt-11 scroll-animate" data-animation="animate-fade-in-up" data-delay="800">
-            <div className="text-center mb-4">
-              <h3 className="text-xl font-bold leading-tight">
-                <span className="text-white">Yearly Business Growth:</span><br />
-                <span className="text-[#8fff00]">AI</span> <span className="text-white">vs Traditional</span>
-              </h3>
+          <div className="lg:hidden">
+            <div className="sm:hidden mt-11 scroll-animate" data-animation="animate-fade-in-up" data-delay="800">
+              <div className="text-center mb-4">
+                <h3 className="text-xl font-bold leading-tight">
+                  <span className="text-white">Yearly Business Growth:</span><br />
+                  <span className="text-[#8fff00]">AI</span> <span className="text-white">vs Traditional</span>
+                </h3>
+              </div>
+              
+              <svg viewBox="0 0 340 150" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+                {/* Background gradient area */}
+                <defs>
+                  <linearGradient id="aiGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor="#8fff00" stopOpacity="0.1"/>
+                    <stop offset="100%" stopColor="#8fff00" stopOpacity="0"/>
+                  </linearGradient>
+                </defs>
+                
+                {/* Horizontal grid */}
+                <line x1="20" y1="130" x2="320" y2="130" stroke="#ffffff12" strokeWidth="1"/>
+                <line x1="20" y1="95" x2="320" y2="95" stroke="#ffffff06" strokeWidth="1" strokeDasharray="3 3"/>
+                <line x1="20" y1="60" x2="320" y2="60" stroke="#ffffff06" strokeWidth="1" strokeDasharray="3 3"/>
+                <line x1="20" y1="25" x2="320" y2="25" stroke="#ffffff06" strokeWidth="1" strokeDasharray="3 3"/>
+                
+                {/* Traditional business line (slow growth with subtle curve) */}
+                <path
+                  d="M 20 120 Q 57 117, 95 113 T 170 107 Q 207 105, 245 103 T 320 99"
+                  fill="none"
+                  stroke="#ffffff"
+                  strokeWidth="2.8"
+                  strokeLinecap="round"
+                  strokeDasharray="330"
+                  strokeDashoffset="330"
+                  className="animate-draw-line"
+                  style={{ animationDelay: '0.4s' }}
+                />
+                
+                {/* AI-powered business line (exponential growth with dynamic curves) */}
+                <path
+                  d="M 20 120 Q 50 110, 95 95 T 170 60 Q 205 43, 245 30 T 320 15"
+                  fill="none"
+                  stroke="#8fff00"
+                  strokeWidth="3.2"
+                  strokeLinecap="round"
+                  strokeDasharray="380"
+                  strokeDashoffset="380"
+                  className="animate-draw-line"
+                  style={{ animationDelay: '0.4s' }}
+                />
+                
+                {/* Glow effect for AI line */}
+                <path
+                  d="M 20 120 Q 50 110, 95 95 T 170 60 Q 205 43, 245 30 T 320 15"
+                  fill="none"
+                  stroke="#8fff00"
+                  strokeWidth="8"
+                  opacity="0.2"
+                  strokeLinecap="round"
+                  strokeDasharray="380"
+                  strokeDashoffset="380"
+                  className="animate-draw-line"
+                  style={{ animationDelay: '0.4s' }}
+                />
+                
+                {/* Fill under AI line */}
+                <path
+                  d="M 20 120 Q 50 110, 95 95 T 170 60 Q 205 43, 245 30 T 320 15 L 320 130 L 20 130 Z"
+                  fill="url(#aiGradient)"
+                />
+                
+                {/* Starting point marker */}
+                <circle cx="20" cy="120" r="4" fill="#ffffff" opacity="0.7"/>
+                
+                {/* End point - Traditional (appears after line animation) */}
+                <circle cx="320" cy="99" r="3.5" fill="#ffffff" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}/>
+                <text x="260" y="93" fill="#ffffff" fontSize="11" fontWeight="600" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}>+45%</text>
+                
+                {/* End point - AI (appears after line animation) */}
+                <circle cx="320" cy="15" r="4.5" fill="#8fff00" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}/>
+                <text x="255" y="12" fill="#8fff00" fontSize="12" fontWeight="700" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}>+285%</text>
+              </svg>
             </div>
-            
-            <svg viewBox="0 0 340 150" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
-              {/* Background gradient area */}
-              <defs>
-                <linearGradient id="aiGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="#8fff00" stopOpacity="0.1"/>
-                  <stop offset="100%" stopColor="#8fff00" stopOpacity="0"/>
-                </linearGradient>
-              </defs>
-              
-              {/* Horizontal grid */}
-              <line x1="20" y1="130" x2="320" y2="130" stroke="#ffffff12" strokeWidth="1"/>
-              <line x1="20" y1="95" x2="320" y2="95" stroke="#ffffff06" strokeWidth="1" strokeDasharray="3 3"/>
-              <line x1="20" y1="60" x2="320" y2="60" stroke="#ffffff06" strokeWidth="1" strokeDasharray="3 3"/>
-              <line x1="20" y1="25" x2="320" y2="25" stroke="#ffffff06" strokeWidth="1" strokeDasharray="3 3"/>
-              
-              {/* Traditional business line (slow growth with subtle curve) */}
-              <path
-                d="M 20 120 Q 57 117, 95 113 T 170 107 Q 207 105, 245 103 T 320 99"
-                fill="none"
-                stroke="#ffffff"
-                strokeWidth="2.8"
-                strokeLinecap="round"
-                strokeDasharray="330"
-                strokeDashoffset="330"
-                className="animate-draw-line"
-                style={{ animationDelay: '0.4s' }}
-              />
-              
-              {/* AI-powered business line (exponential growth with dynamic curves) */}
-              <path
-                d="M 20 120 Q 50 110, 95 95 T 170 60 Q 205 43, 245 30 T 320 15"
-                fill="none"
-                stroke="#8fff00"
-                strokeWidth="3.2"
-                strokeLinecap="round"
-                strokeDasharray="380"
-                strokeDashoffset="380"
-                className="animate-draw-line"
-                style={{ animationDelay: '0.4s' }}
-              />
-              
-              {/* Glow effect for AI line */}
-              <path
-                d="M 20 120 Q 50 110, 95 95 T 170 60 Q 205 43, 245 30 T 320 15"
-                fill="none"
-                stroke="#8fff00"
-                strokeWidth="8"
-                opacity="0.2"
-                strokeLinecap="round"
-                strokeDasharray="380"
-                strokeDashoffset="380"
-                className="animate-draw-line"
-                style={{ animationDelay: '0.4s' }}
-              />
-              
-              {/* Fill under AI line */}
-              <path
-                d="M 20 120 Q 50 110, 95 95 T 170 60 Q 205 43, 245 30 T 320 15 L 320 130 L 20 130 Z"
-                fill="url(#aiGradient)"
-              />
-              
-              {/* Starting point marker */}
-              <circle cx="20" cy="120" r="4" fill="#ffffff" opacity="0.7"/>
-              
-              {/* End point - Traditional (appears after line animation) */}
-              <circle cx="320" cy="99" r="3.5" fill="#ffffff" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}/>
-              <text x="260" y="93" fill="#ffffff" fontSize="11" fontWeight="600" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}>+45%</text>
-              
-              {/* End point - AI (appears after line animation) */}
-              <circle cx="320" cy="15" r="4.5" fill="#8fff00" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}/>
-              <text x="255" y="12" fill="#8fff00" fontSize="12" fontWeight="700" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}>+285%</text>
-            </svg>
           </div>
-        </div>
-        </div>
       </section>
 
       {/* Simple Approach Section */}
