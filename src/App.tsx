@@ -177,114 +177,32 @@ function App() {
         </div>
         
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Column - Content */}
-            <div className="max-w-4xl sm:max-w-5xl lg:max-w-none">
-              <div className="inline-flex items-center gap-2 mb-4 sm:mb-6 px-3 sm:px-5 py-2 sm:py-2.5 bg-gradient-to-r from-[#8fff00]/10 to-[#8fff00]/5 backdrop-blur-sm border border-[#8fff00]/30 rounded-full shadow-[0_0_20px_rgba(143,255,0,0.15)] hover:shadow-[0_0_30px_rgba(143,255,0,0.25)] hover:border-[#8fff00]/50 transition-all duration-300 animate-fade-in">
-                <Sparkles className="w-3 sm:w-4 h-3 sm:h-4 text-[#8fff00]" />
-                <span className="text-[#8fff00] text-xs sm:text-sm font-semibold">AI Implementation Made Simple</span>
-              </div>
-              <h1 className="text-4xl sm:text-7xl md:text-8xl lg:text-7xl font-bold mb-4 sm:mb-8 leading-tight tracking-tight animate-fade-in-up animation-delay-200">
-                Your AI Department.{' '}
-                <span className="bg-gradient-to-r from-[#8fff00] via-[#a0ff40] to-[#8fff00] bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
-                  Without Hiring One.
-                </span>
-              </h1>
-              <p className="sm:hidden text-base text-gray-400 mb-6 leading-relaxed animate-fade-in animation-delay-400">
-                We help traditional businesses actually use AI to cut costs and boost revenue.
-                No hype, no complicated tech jargon, just practical tools that seamlessly integrate with your existing workflow and deliver measurable results.
-              </p>
-              <p className="hidden sm:block text-xl md:text-2xl text-gray-400 mb-6 sm:mb-10 leading-relaxed animate-fade-in animation-delay-400">
-                We help traditional businesses <span className="text-white font-semibold">actually use AI</span> to cut costs and boost revenue.
-                No hype, no complicated tech jargon, just practical tools that seamlessly <span className="text-white font-semibold">integrate</span> with your <span className="text-white font-semibold">existing workflow</span> and deliver measurable results.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 animate-fade-in animation-delay-600">
-                <button 
-                  onClick={() => document.getElementById('booking-section')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="bg-[#8fff00] text-black px-6 sm:px-10 py-3 sm:py-5 rounded-lg font-semibold text-base sm:text-lg hover:bg-[#7ae600] transition-all flex items-center justify-center gap-2 group"
-                >
-                  Book Your Free Consultation
-                  <ArrowRight className="w-4 sm:w-5 h-4 sm:h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
-              </div>
+          <div className="max-w-4xl sm:max-w-5xl lg:max-w-6xl">
+            <div className="inline-flex items-center gap-2 mb-4 sm:mb-6 px-3 sm:px-5 py-2 sm:py-2.5 bg-gradient-to-r from-[#8fff00]/10 to-[#8fff00]/5 backdrop-blur-sm border border-[#8fff00]/30 rounded-full shadow-[0_0_20px_rgba(143,255,0,0.15)] hover:shadow-[0_0_30px_rgba(143,255,0,0.25)] hover:border-[#8fff00]/50 transition-all duration-300 animate-fade-in">
+              <Sparkles className="w-3 sm:w-4 h-3 sm:h-4 text-[#8fff00]" />
+              <span className="text-[#8fff00] text-xs sm:text-sm font-semibold">AI Implementation Made Simple</span>
+            </div>
+            <h1 className="text-4xl sm:text-7xl md:text-8xl lg:text-[7rem] font-bold mb-4 sm:mb-8 leading-tight tracking-tight animate-fade-in-up animation-delay-200">
+              Your AI Department.{' '}
+              <span className="bg-gradient-to-r from-[#8fff00] via-[#a0ff40] to-[#8fff00] bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
+                Without Hiring One.
+              </span>
+            </h1>
+            <p className="text-base sm:text-xl md:text-2xl text-gray-400 mb-6 sm:mb-10 leading-relaxed max-w-3xl lg:max-w-4xl animate-fade-in animation-delay-400">
+              We help traditional businesses <span className="text-white font-semibold">actually use AI</span> to cut costs and boost revenue.
+              No hype, no complicated tech jargon, just practical tools that seamlessly <span className="text-white font-semibold">integrate</span> with your <span className="text-white font-semibold">existing workflow</span> and deliver measurable results.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in animation-delay-600">
+              <button 
+                onClick={() => document.getElementById('booking-section')?.scrollIntoView({ behavior: 'smooth' })}
+                className="bg-[#8fff00] text-black px-6 sm:px-10 py-3 sm:py-5 rounded-lg font-semibold text-base sm:text-lg hover:bg-[#7ae600] transition-all flex items-center justify-center gap-2 group"
+              >
+                Book Your Free Consultation
+                <ArrowRight className="w-4 sm:w-5 h-4 sm:h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
             </div>
 
-            {/* Right Column - Visual Element (Desktop Only) */}
-            <div className="hidden lg:block relative animate-fade-in animation-delay-400">
-              <div className="relative">
-                {/* Main visual container */}
-                <div className="relative bg-gradient-to-br from-[#8fff00]/10 via-transparent to-[#8fff00]/5 border border-[#8fff00]/20 rounded-2xl p-8 backdrop-blur-sm">
-                  {/* Animated rings */}
-                  <div className="absolute inset-0 rounded-2xl">
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 border-2 border-[#8fff00]/20 rounded-full animate-ping" style={{ animationDuration: '3s' }}></div>
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 border-2 border-[#8fff00]/30 rounded-full animate-pulse"></div>
-                  </div>
-                  
-                  {/* Content */}
-                  <div className="relative z-10 space-y-6">
-                    {/* AI Brain Icon */}
-                    <div className="flex justify-center mb-8">
-                      <div className="relative">
-                        <Bot className="w-24 h-24 text-[#8fff00]" strokeWidth={1.5} />
-                        <div className="absolute -top-2 -right-2 w-6 h-6 bg-[#8fff00] rounded-full animate-pulse flex items-center justify-center">
-                          <Sparkles className="w-4 h-4 text-black" />
-                        </div>
-                      </div>
-                    </div>
-                    
-                    {/* Stats Grid */}
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="bg-black/40 rounded-xl p-4 border border-[#8fff00]/10">
-                        <div className="text-3xl font-bold text-[#8fff00] mb-1">285%</div>
-                        <div className="text-xs text-gray-400">Growth Increase</div>
-                      </div>
-                      <div className="bg-black/40 rounded-xl p-4 border border-[#8fff00]/10">
-                        <div className="text-3xl font-bold text-[#8fff00] mb-1">60%</div>
-                        <div className="text-xs text-gray-400">Cost Reduction</div>
-                      </div>
-                      <div className="bg-black/40 rounded-xl p-4 border border-[#8fff00]/10">
-                        <div className="text-3xl font-bold text-[#8fff00] mb-1">2 Weeks</div>
-                        <div className="text-xs text-gray-400">First Results</div>
-                      </div>
-                      <div className="bg-black/40 rounded-xl p-4 border border-[#8fff00]/10">
-                        <div className="text-3xl font-bold text-[#8fff00] mb-1">24/7</div>
-                        <div className="text-xs text-gray-400">AI Support</div>
-                      </div>
-                    </div>
-                    
-                    {/* Process flow */}
-                    <div className="space-y-3 pt-4">
-                      <div className="flex items-center gap-3 text-sm">
-                        <div className="w-8 h-8 rounded-full bg-[#8fff00]/20 border border-[#8fff00]/40 flex items-center justify-center flex-shrink-0">
-                          <span className="text-[#8fff00] font-bold">1</span>
-                        </div>
-                        <span className="text-gray-300">Analyze Your Workflow</span>
-                      </div>
-                      <div className="flex items-center gap-3 text-sm">
-                        <div className="w-8 h-8 rounded-full bg-[#8fff00]/20 border border-[#8fff00]/40 flex items-center justify-center flex-shrink-0">
-                          <span className="text-[#8fff00] font-bold">2</span>
-                        </div>
-                        <span className="text-gray-300">Build Custom AI Tools</span>
-                      </div>
-                      <div className="flex items-center gap-3 text-sm">
-                        <div className="w-8 h-8 rounded-full bg-[#8fff00]/20 border border-[#8fff00]/40 flex items-center justify-center flex-shrink-0">
-                          <span className="text-[#8fff00] font-bold">3</span>
-                        </div>
-                        <span className="text-gray-300">See Measurable Results</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Floating elements */}
-                <div className="absolute -top-4 -left-4 w-20 h-20 bg-[#8fff00]/20 rounded-full blur-2xl animate-pulse"></div>
-                <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-[#8fff00]/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-              </div>
-            </div>
-          </div>
-
-          {/* Mobile Growth Graph */}
-          <div className="lg:hidden">
+            {/* Mobile Growth Graph */}
             <div className="sm:hidden mt-11 scroll-animate" data-animation="animate-fade-in-up" data-delay="800">
               <div className="text-center mb-4">
                 <h3 className="text-xl font-bold leading-tight">
@@ -367,6 +285,7 @@ function App() {
               </svg>
             </div>
           </div>
+        </div>
       </section>
 
       {/* Simple Approach Section */}
