@@ -169,35 +169,64 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-24 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="md:relative">
-            {/* Main Content */}
-            <div className="max-w-4xl md:max-w-2xl lg:max-w-3xl">
-              <div className="inline-flex items-center gap-2 mb-4 sm:mb-6 px-3 sm:px-5 py-2 sm:py-2.5 bg-gradient-to-r from-[#8fff00]/10 to-[#8fff00]/5 backdrop-blur-sm border border-[#8fff00]/30 rounded-full shadow-[0_0_20px_rgba(143,255,0,0.15)] hover:shadow-[0_0_30px_rgba(143,255,0,0.25)] hover:border-[#8fff00]/50 transition-all duration-300 animate-fade-in">
-                <Sparkles className="w-3 sm:w-4 h-3 sm:h-4 text-[#8fff00]" />
-                <span className="text-[#8fff00] text-xs sm:text-sm font-semibold">AI Implementation Made Simple</span>
-              </div>
-              <h1 className="text-4xl sm:text-7xl md:text-7xl lg:text-8xl font-bold mb-4 sm:mb-6 leading-tight tracking-tight animate-fade-in-up animation-delay-200">
-                Your AI Department.{' '}
-                <span className="text-[#8fff00]">Without Hiring One.</span>
-              </h1>
-              <p className="text-base sm:text-xl text-gray-400 mb-6 sm:mb-8 leading-relaxed max-w-3xl md:max-w-xl lg:max-w-2xl animate-fade-in animation-delay-400">
-                We help traditional businesses actually use AI to cut costs and boost revenue.
-                No hype, no complicated tech jargon, just practical tools that seamlessly integrate with your existing workflow and deliver measurable results.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 animate-fade-in animation-delay-600">
-                <button 
-                  onClick={() => document.getElementById('booking-section')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="bg-[#8fff00] text-black px-6 sm:px-8 py-3 sm:py-4 rounded-md font-semibold text-base sm:text-lg hover:bg-[#7ae600] transition-all flex items-center justify-center gap-2 group"
-                >
-                  Book Your Free Consultation
-                  <ArrowRight className="w-4 sm:w-5 h-4 sm:h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
-              </div>
+      <section className="pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 relative overflow-hidden">
+        {/* Desktop background elements */}
+        <div className="hidden sm:block absolute inset-0 pointer-events-none">
+          <div className="absolute top-20 right-10 w-96 h-96 bg-[#8fff00]/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-20 w-80 h-80 bg-[#8fff00]/3 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="max-w-4xl sm:max-w-5xl lg:max-w-6xl">
+            <div className="inline-flex items-center gap-2 mb-4 sm:mb-6 px-3 sm:px-5 py-2 sm:py-2.5 bg-gradient-to-r from-[#8fff00]/10 to-[#8fff00]/5 backdrop-blur-sm border border-[#8fff00]/30 rounded-full shadow-[0_0_20px_rgba(143,255,0,0.15)] hover:shadow-[0_0_30px_rgba(143,255,0,0.25)] hover:border-[#8fff00]/50 transition-all duration-300 animate-fade-in">
+              <Sparkles className="w-3 sm:w-4 h-3 sm:h-4 text-[#8fff00]" />
+              <span className="text-[#8fff00] text-xs sm:text-sm font-semibold">AI Implementation Made Simple</span>
+            </div>
+            <h1 className="text-4xl sm:text-7xl md:text-8xl lg:text-[7rem] font-bold mb-4 sm:mb-8 leading-tight tracking-tight animate-fade-in-up animation-delay-200">
+              Your AI Department.{' '}
+              <span className="bg-gradient-to-r from-[#8fff00] via-[#a0ff40] to-[#8fff00] bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
+                Without Hiring One.
+              </span>
+            </h1>
+            <p className="text-base sm:text-xl md:text-2xl text-gray-400 mb-6 sm:mb-10 leading-relaxed max-w-3xl lg:max-w-4xl animate-fade-in animation-delay-400">
+              We help traditional businesses actually use AI to cut costs and boost revenue.
+              No hype, no complicated tech jargon, just practical tools that seamlessly integrate with your existing workflow and deliver <span className="text-white font-semibold">measurable results</span>.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 animate-fade-in animation-delay-600">
+              <button 
+                onClick={() => document.getElementById('booking-section')?.scrollIntoView({ behavior: 'smooth' })}
+                className="bg-[#8fff00] text-black px-6 sm:px-10 py-3 sm:py-5 rounded-lg font-semibold text-base sm:text-lg hover:bg-[#7ae600] transition-all flex items-center justify-center gap-2 group shadow-[0_0_30px_rgba(143,255,0,0.3)] hover:shadow-[0_0_40px_rgba(143,255,0,0.5)] hover:scale-105 transform duration-300"
+              >
+                Book Your Free Consultation
+                <ArrowRight className="w-4 sm:w-5 h-4 sm:h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
+              <button 
+                onClick={() => document.getElementById('solutions-section')?.scrollIntoView({ behavior: 'smooth' })}
+                className="hidden sm:flex border-2 border-gray-700 text-white px-10 py-5 rounded-lg font-semibold text-lg hover:border-[#8fff00] hover:bg-[#8fff00]/5 transition-all items-center justify-center gap-2 group"
+              >
+                See How It Works
+                <ArrowForward className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
 
-            {/* Mobile Growth Graph - Bottom of text on mobile */}
-            <div className="mt-11 md:hidden scroll-animate" data-animation="animate-fade-in-up" data-delay="800">
+            {/* Desktop Stats Banner */}
+            <div className="hidden sm:grid sm:grid-cols-3 gap-6 mt-16 lg:mt-20">
+              <div className="bg-gradient-to-br from-[#8fff00]/10 to-transparent border border-[#8fff00]/20 rounded-xl p-6 backdrop-blur-sm hover:border-[#8fff00]/40 transition-all duration-300">
+                <div className="text-4xl lg:text-5xl font-bold text-[#8fff00] mb-2">285%</div>
+                <div className="text-gray-400">Avg. Growth Increase</div>
+              </div>
+              <div className="bg-gradient-to-br from-[#8fff00]/10 to-transparent border border-[#8fff00]/20 rounded-xl p-6 backdrop-blur-sm hover:border-[#8fff00]/40 transition-all duration-300">
+                <div className="text-4xl lg:text-5xl font-bold text-[#8fff00] mb-2">60%</div>
+                <div className="text-gray-400">Cost Reduction</div>
+              </div>
+              <div className="bg-gradient-to-br from-[#8fff00]/10 to-transparent border border-[#8fff00]/20 rounded-xl p-6 backdrop-blur-sm hover:border-[#8fff00]/40 transition-all duration-300">
+                <div className="text-4xl lg:text-5xl font-bold text-[#8fff00] mb-2">2 Weeks</div>
+                <div className="text-gray-400">To First Results</div>
+              </div>
+            </div>
+
+            {/* Mobile Growth Graph */}
+            <div className="sm:hidden mt-11 scroll-animate" data-animation="animate-fade-in-up" data-delay="800">
               <div className="text-center mb-4">
                 <h3 className="text-xl font-bold leading-tight">
                   <span className="text-white">Yearly Business Growth:</span><br />
@@ -264,90 +293,6 @@ function App() {
                 <path
                   d="M 20 120 Q 50 110, 95 95 T 170 60 Q 205 43, 245 30 T 320 15 L 320 130 L 20 130 Z"
                   fill="url(#aiGradient)"
-                />
-                
-                {/* Starting point marker */}
-                <circle cx="20" cy="120" r="4" fill="#ffffff" opacity="0.7"/>
-                
-                {/* End point - Traditional (appears after line animation) */}
-                <circle cx="320" cy="99" r="3.5" fill="#ffffff" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}/>
-                <text x="260" y="93" fill="#ffffff" fontSize="11" fontWeight="600" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}>+45%</text>
-                
-                {/* End point - AI (appears after line animation) */}
-                <circle cx="320" cy="15" r="4.5" fill="#8fff00" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}/>
-                <text x="255" y="12" fill="#8fff00" fontSize="12" fontWeight="700" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}>+285%</text>
-              </svg>
-            </div>
-            </div>
-
-            {/* Desktop Growth Graph - Positioned on right side */}
-            <div className="hidden md:block md:absolute md:top-32 lg:top-28 md:right-0 md:w-[400px] lg:w-[480px] scroll-animate" data-animation="animate-fade-in-up" data-delay="800">
-              <div className="mb-4">
-                <h3 className="text-lg lg:text-xl font-bold leading-tight text-gray-300">
-                  <span className="text-white">Yearly Business Growth:</span>{' '}
-                  <span className="text-[#8fff00]">AI</span> <span className="text-white">vs Traditional</span>
-                </h3>
-              </div>
-              
-              <svg viewBox="0 0 340 150" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
-                {/* Background gradient area */}
-                <defs>
-                  <linearGradient id="aiGradientDesktop" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#8fff00" stopOpacity="0.1"/>
-                    <stop offset="100%" stopColor="#8fff00" stopOpacity="0"/>
-                  </linearGradient>
-                </defs>
-                
-                {/* Horizontal grid */}
-                <line x1="20" y1="130" x2="320" y2="130" stroke="#ffffff12" strokeWidth="1"/>
-                <line x1="20" y1="95" x2="320" y2="95" stroke="#ffffff06" strokeWidth="1" strokeDasharray="3 3"/>
-                <line x1="20" y1="60" x2="320" y2="60" stroke="#ffffff06" strokeWidth="1" strokeDasharray="3 3"/>
-                <line x1="20" y1="25" x2="320" y2="25" stroke="#ffffff06" strokeWidth="1" strokeDasharray="3 3"/>
-                
-                {/* Traditional business line (slow growth with subtle curve) */}
-                <path
-                  d="M 20 120 Q 57 117, 95 113 T 170 107 Q 207 105, 245 103 T 320 99"
-                  fill="none"
-                  stroke="#ffffff"
-                  strokeWidth="2.8"
-                  strokeLinecap="round"
-                  strokeDasharray="330"
-                  strokeDashoffset="330"
-                  className="animate-draw-line"
-                  style={{ animationDelay: '0.4s' }}
-                />
-                
-                {/* AI-powered business line (exponential growth with dynamic curves) */}
-                <path
-                  d="M 20 120 Q 50 110, 95 95 T 170 60 Q 205 43, 245 30 T 320 15"
-                  fill="none"
-                  stroke="#8fff00"
-                  strokeWidth="3.2"
-                  strokeLinecap="round"
-                  strokeDasharray="380"
-                  strokeDashoffset="380"
-                  className="animate-draw-line"
-                  style={{ animationDelay: '0.4s' }}
-                />
-                
-                {/* Glow effect for AI line */}
-                <path
-                  d="M 20 120 Q 50 110, 95 95 T 170 60 Q 205 43, 245 30 T 320 15"
-                  fill="none"
-                  stroke="#8fff00"
-                  strokeWidth="8"
-                  opacity="0.2"
-                  strokeLinecap="round"
-                  strokeDasharray="380"
-                  strokeDashoffset="380"
-                  className="animate-draw-line"
-                  style={{ animationDelay: '0.4s' }}
-                />
-                
-                {/* Fill under AI line */}
-                <path
-                  d="M 20 120 Q 50 110, 95 95 T 170 60 Q 205 43, 245 30 T 320 15 L 320 130 L 20 130 Z"
-                  fill="url(#aiGradientDesktop)"
                 />
                 
                 {/* Starting point marker */}
