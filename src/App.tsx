@@ -188,7 +188,11 @@ function App() {
                 Without Hiring One.
               </span>
             </h1>
-            <p className="text-base sm:text-xl md:text-2xl text-gray-400 mb-6 sm:mb-10 leading-relaxed max-w-3xl lg:max-w-4xl animate-fade-in animation-delay-400">
+            <p className="sm:hidden text-base text-gray-400 mb-6 leading-relaxed animate-fade-in animation-delay-400">
+              We help traditional businesses actually use AI to cut costs and boost revenue.
+              No hype, no complicated tech jargon, just practical tools that seamlessly integrate with your existing workflow and deliver measurable results.
+            </p>
+            <p className="hidden sm:block text-xl md:text-2xl text-gray-400 mb-6 sm:mb-10 leading-relaxed max-w-3xl lg:max-w-4xl animate-fade-in animation-delay-400">
               We help traditional businesses <span className="text-white font-semibold">actually use AI</span> to cut costs and boost revenue.
               No hype, no complicated tech jargon, just practical tools that seamlessly <span className="text-white font-semibold">integrate</span> with your <span className="text-white font-semibold">existing workflow</span> and deliver measurable results.
             </p>
