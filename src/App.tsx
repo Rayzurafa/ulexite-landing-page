@@ -190,7 +190,7 @@ function App() {
             </h1>
             <p className="text-base sm:text-xl md:text-2xl text-gray-400 mb-6 sm:mb-10 leading-relaxed max-w-3xl lg:max-w-4xl animate-fade-in animation-delay-400">
               We help traditional businesses <span className="sm:text-white sm:font-semibold">actually use AI</span> to cut costs and boost revenue.
-              No hype, no complicated tech jargon, just practical tools that seamlessly <span className="sm:text-white sm:font-semibold">integrate</span> with your <span className="sm:text-white sm:font-semibold">existing workflow</span> and deliver measurable results.
+              No hype, no complicated tech jargon, just practical tools that seamlessly <span className="sm:text-white sm:font-semibold">integrate</span> with your <span className="sm:text-white sm:font-semibold">existing workflow</span> and deliver <span className="sm:text-white sm:font-semibold">measurable results</span>.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 animate-fade-in animation-delay-600">
               <button 
