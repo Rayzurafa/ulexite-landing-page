@@ -409,7 +409,7 @@ function App() {
                   <span className="bg-black text-[#8fff00] text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wide">Hot Right Now</span>
                 </div>
                 <p className="text-sm sm:text-base text-black/80 leading-relaxed sm:max-w-4xl">
-                  The internet's buying environment has changed. AI compressed attention spans — fewer casual browsers, more decision-ready buyers landing with their credit card half out. When they hit your site, you have seconds. If it's slow, vague, or generic, they're gone and so is the sale. We build and redesign websites specifically for this new reality: fast, clear, conversion-focused sites that establish trust instantly and turn visitors into buyers before they hit the back button. Not just a website. Conversion infrastructure.
+                  The internet's buying environment has changed. AI compressed attention spans, fewer casual browsers, more decision-ready buyers landing with their credit card half out. When they hit your site, you have seconds. If it's slow, vague, or generic, they're gone and so is the sale. We build and redesign websites specifically for this new reality: fast, clear, conversion-focused sites that establish trust instantly and turn visitors into buyers before they hit the back button. Not just a website. Conversion infrastructure.
                 </p>
               </div>
             </div>
