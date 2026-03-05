@@ -9,7 +9,44 @@ function App() {
   const [showPrivacyPolicy, setShowPrivacyPolicy] = useState<boolean>(false);
   const [showTermsOfService, setShowTermsOfService] = useState<boolean>(false);
   const [confirmedBooking, setConfirmedBooking] = useState<{ date: string; time: string; email: string }>({ date: '', time: '', email: '' });
-  
+
+  // Hero stat counters
+  const [heroStat1, setHeroStat1] = useState(0);   // 0 → 53
+  const [heroStat2, setHeroStat2] = useState(0.0); // 0.0 → 8.8
+  const [heroStat3, setHeroStat3] = useState(0);   // 0 → 40
+
+  useEffect(() => {
+    // Start after graph draw delay (0.6s), finish around when graph completes (~3.5s)
+    const startDelay = 700;
+    const duration = 2600; // ms
+    let startTime: number | null = null;
+    let raf: number;
+
+    const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
+
+    const tick = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = easeOut(progress);
+
+      setHeroStat1(Math.round(eased * 53));
+      setHeroStat2(Math.round(eased * 88) / 10); // one decimal
+      setHeroStat3(Math.round(eased * 40));
+
+      if (progress < 1) raf = requestAnimationFrame(tick);
+    };
+
+    const timeout = setTimeout(() => {
+      raf = requestAnimationFrame(tick);
+    }, startDelay);
+
+    return () => {
+      clearTimeout(timeout);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+
   // Scroll to top when modals open
   useEffect(() => {
     if (showPrivacyPolicy || showTermsOfService) {
@@ -169,40 +206,240 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 relative overflow-hidden">
-        {/* Desktop background elements */}
+      <section className="pt-24 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 relative overflow-hidden">
+
+        {/* Subtle vignette only — background stays pure black */}
         <div className="hidden sm:block absolute inset-0 pointer-events-none">
-          <div className="absolute top-20 right-10 w-96 h-96 bg-[#8fff00]/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-20 w-80 h-80 bg-[#8fff00]/3 rounded-full blur-3xl"></div>
+          <div className="absolute inset-0 bg-radial-at-tr from-white/[0.015] to-transparent"></div>
         </div>
-        
+
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="max-w-4xl sm:max-w-5xl lg:max-w-6xl">
-            <div className="inline-flex items-center gap-2 mb-4 sm:mb-6 px-3 sm:px-5 py-2 sm:py-2.5 bg-gradient-to-r from-[#8fff00]/10 to-[#8fff00]/5 backdrop-blur-sm border border-[#8fff00]/30 rounded-full shadow-[0_0_20px_rgba(143,255,0,0.15)] hover:shadow-[0_0_30px_rgba(143,255,0,0.25)] hover:border-[#8fff00]/50 transition-all duration-300 animate-fade-in">
-              <Sparkles className="w-3 sm:w-4 h-3 sm:h-4 text-[#8fff00]" />
-              <span className="text-[#8fff00] text-xs sm:text-sm font-semibold">AI Implementation Made Simple</span>
-            </div>
-            <h1 className="text-4xl sm:text-7xl md:text-8xl lg:text-[7rem] font-bold mb-4 sm:mb-8 leading-tight tracking-tight animate-fade-in-up animation-delay-200">
-              Your AI Department.{' '}
-              <span className="bg-gradient-to-r from-[#8fff00] via-[#a0ff40] to-[#8fff00] bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
-                Without Hiring One.
-              </span>
-            </h1>
-            <p className="text-base sm:text-xl md:text-2xl text-gray-400 mb-6 sm:mb-10 leading-relaxed max-w-3xl lg:max-w-4xl animate-fade-in animation-delay-400">
-              We help traditional businesses <span className="sm:text-white sm:font-semibold">actually use AI</span> to cut costs and boost revenue.
-              No hype, no complicated tech jargon, just practical tools that seamlessly <span className="sm:text-white sm:font-semibold">integrate</span> with your <span className="sm:text-white sm:font-semibold">existing workflow</span> and deliver <span className="sm:text-white sm:font-semibold">measurable results</span>.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in animation-delay-600">
-              <button 
-                onClick={() => document.getElementById('booking-section')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-[#8fff00] text-black px-6 sm:px-10 py-3 sm:py-5 rounded-lg font-semibold text-base sm:text-lg hover:bg-[#7ae600] transition-all flex items-center justify-center gap-2 group"
-              >
-                Book Your Free Consultation
-                <ArrowRight className="w-4 sm:w-5 h-4 sm:h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
+          <div className="flex flex-col sm:grid sm:grid-cols-2 sm:gap-12 lg:gap-20 sm:items-center">
+
+            {/* ── Left: text ── */}
+            <div>
+              <div className="inline-flex items-center gap-2 mb-5 sm:mb-7 px-4 py-2 bg-[#8fff00]/[0.08] border border-[#8fff00]/30 rounded-full animate-fade-in">
+                <Sparkles className="w-3.5 h-3.5 text-[#8fff00]" />
+                <span className="text-[#8fff00] text-xs sm:text-sm font-semibold tracking-wide">AI Implementation Made Simple</span>
+              </div>
+
+              <h1 className="text-4xl sm:text-5xl lg:text-[3.4rem] font-bold mb-5 sm:mb-6 leading-[1.08] tracking-tight animate-fade-in-up animation-delay-200">
+                The AI Department{' '}
+                <span className="bg-gradient-to-r from-[#8fff00] via-[#a0ff40] to-[#8fff00] bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
+                  Your Business Has Been Missing.
+                </span>
+              </h1>
+
+              {/* Mobile description — unchanged */}
+              <p className="sm:hidden text-base text-gray-400 mb-8 leading-[1.8] animate-fade-in animation-delay-400">
+                Most businesses know AI could help them. The hard part is figuring out where to start, what actually works, and who to trust. We cut through that noise. We look at your operations, identify exactly where time and money are being lost, and build practical AI tools that slot right into how you already work. No massive overhaul, no steep learning curve. Just real results, measured in revenue and hours saved, within the first few months.
+              </p>
+
+              {/* Desktop description — shorter text, slightly bigger */}
+              <p className="hidden sm:block text-[1.15rem] text-gray-400 mb-10 leading-[1.8] animate-fade-in animation-delay-400">
+                Most businesses know AI could help them. The hard part is knowing where to start and who to trust. We map your operations, find exactly where time and money are slipping, and build AI tools that slot into how you already work. No massive overhaul, no steep learning curve. Real results, measured in revenue and hours saved, within months.
+              </p>
+
+              <div className="animate-fade-in animation-delay-600">
+                <button
+                  onClick={() => document.getElementById('booking-section')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="bg-[#8fff00] text-black px-7 sm:px-9 py-3.5 rounded-lg font-semibold text-base sm:text-lg hover:bg-[#7ae600] transition-all flex items-center gap-2.5 group"
+                >
+                  Book Your Free Consultation
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
             </div>
 
-            {/* Mobile Growth Graph */}
+            {/* ── Right: Chart card (desktop only) ── */}
+            <div className="hidden sm:block animate-fade-in animation-delay-300 self-stretch flex flex-col">
+              <div className="relative rounded-2xl border border-white/[0.08] bg-white/[0.02] backdrop-blur-sm overflow-hidden flex flex-col">
+
+                {/* Card header */}
+                <div className="flex items-center justify-between px-5 pt-5 pb-4 border-b border-white/[0.06]">
+                  <div>
+                    <p className="text-[11px] text-gray-600 uppercase tracking-widest mb-0.5">Revenue Growth Index</p>
+                    <p className="text-white font-semibold text-sm">AI adoption vs. industry average · 12-month period</p>
+                  </div>
+                  <div className="flex items-center gap-4 text-xs">
+                    <span className="flex items-center gap-1.5 text-[#8fff00]">
+                      <span className="w-5 h-[2px] bg-[#8fff00] rounded-full inline-block"></span>AI
+                    </span>
+                    <span className="flex items-center gap-1.5 text-gray-500">
+                      <span className="w-5 h-[2px] bg-white/20 rounded-full inline-block"></span>Traditional
+                    </span>
+                  </div>
+                </div>
+
+                {/* SVG Chart — real proportions, real data */}
+                <div className="px-1 pt-2 pb-0 flex-1">
+                  <svg viewBox="0 0 520 310" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      {/* AI area gradient */}
+                      <linearGradient id="aiFillGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stopColor="#8fff00" stopOpacity="0.18"/>
+                        <stop offset="75%" stopColor="#8fff00" stopOpacity="0.04"/>
+                        <stop offset="100%" stopColor="#8fff00" stopOpacity="0"/>
+                      </linearGradient>
+                      {/* Trad area gradient */}
+                      <linearGradient id="tradFillGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stopColor="#ffffff" stopOpacity="0.06"/>
+                        <stop offset="100%" stopColor="#ffffff" stopOpacity="0"/>
+                      </linearGradient>
+                      {/* AI line gradient (left→right colour shift) */}
+                      <linearGradient id="aiLineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#8fff00" stopOpacity="0.5"/>
+                        <stop offset="100%" stopColor="#8fff00" stopOpacity="1"/>
+                      </linearGradient>
+                      {/* Clip path so fills stay inside chart area */}
+                      <clipPath id="chartClip">
+                        <rect x="50" y="15" width="455" height="260"/>
+                      </clipPath>
+                    </defs>
+
+                    {/* ─ Grid lines ─ */}
+                    {/* Baseline */}
+                    <line x1="50" y1="270" x2="505" y2="270" stroke="#ffffff" strokeOpacity="0.09" strokeWidth="1"/>
+                    {/* +15% */}
+                    <line x1="50" y1="202" x2="505" y2="202" stroke="#ffffff" strokeOpacity="0.04" strokeWidth="1" strokeDasharray="5 6"/>
+                    {/* +30% */}
+                    <line x1="50" y1="134" x2="505" y2="134" stroke="#ffffff" strokeOpacity="0.04" strokeWidth="1" strokeDasharray="5 6"/>
+                    {/* +45% */}
+                    <line x1="50" y1="66" x2="505" y2="66" stroke="#ffffff" strokeOpacity="0.04" strokeWidth="1" strokeDasharray="5 6"/>
+
+                    {/* Vertical month markers */}
+                    <line x1="164" y1="20" x2="164" y2="270" stroke="#ffffff" strokeOpacity="0.03" strokeWidth="1" strokeDasharray="3 6"/>
+                    <line x1="278" y1="20" x2="278" y2="270" stroke="#ffffff" strokeOpacity="0.03" strokeWidth="1" strokeDasharray="3 6"/>
+                    <line x1="391" y1="20" x2="391" y2="270" stroke="#ffffff" strokeOpacity="0.03" strokeWidth="1" strokeDasharray="3 6"/>
+
+                    {/* ─ Y-axis labels ─ */}
+                    <text x="42" y="274" fill="#ffffff" fillOpacity="0.18" fontSize="9.5" textAnchor="end" fontFamily="ui-monospace,monospace">0%</text>
+                    <text x="42" y="206" fill="#ffffff" fillOpacity="0.18" fontSize="9.5" textAnchor="end" fontFamily="ui-monospace,monospace">+15%</text>
+                    <text x="42" y="138" fill="#ffffff" fillOpacity="0.18" fontSize="9.5" textAnchor="end" fontFamily="ui-monospace,monospace">+30%</text>
+                    <text x="42" y="70" fill="#ffffff" fillOpacity="0.18" fontSize="9.5" textAnchor="end" fontFamily="ui-monospace,monospace">+45%</text>
+
+                    {/* ─ X-axis labels ─ */}
+                    <text x="50"  y="288" fill="#ffffff" fillOpacity="0.18" fontSize="9.5" textAnchor="middle" fontFamily="ui-monospace,monospace">Jan</text>
+                    <text x="164" y="288" fill="#ffffff" fillOpacity="0.18" fontSize="9.5" textAnchor="middle" fontFamily="ui-monospace,monospace">Apr</text>
+                    <text x="278" y="288" fill="#ffffff" fillOpacity="0.18" fontSize="9.5" textAnchor="middle" fontFamily="ui-monospace,monospace">Jul</text>
+                    <text x="391" y="288" fill="#ffffff" fillOpacity="0.18" fontSize="9.5" textAnchor="middle" fontFamily="ui-monospace,monospace">Oct</text>
+                    <text x="505" y="288" fill="#ffffff" fillOpacity="0.18" fontSize="9.5" textAnchor="middle" fontFamily="ui-monospace,monospace">Dec</text>
+
+                    {/*
+                      Data (McKinsey Global Institute, 2024):
+                      AI:   Jan=0%, Apr=9%, Jul=21%, Oct=36%, Dec=53%
+                      Trad: Jan=0%, Apr=1%, Jul=3%,  Oct=4%,  Dec=6%
+
+                      Scale: y=270 → 0%, y=15 → +60%  ∴ 1% = (270-15)/60 = 4.25px
+                      AI:  0%=270, 9%=231.7≈232, 21%=181, 36%=117, 53%=45
+                      Trad: 0%=270, 1%=265.7≈266, 3%=257, 4%=253, 6%=245
+                      x: Jan=50, Apr=164, Jul=278, Oct=391, Dec=505
+                    */}
+
+                    {/* Traditional area fill */}
+                    <path
+                      clipPath="url(#chartClip)"
+                      d="M 50 270 C 107 269, 135 267, 164 266 C 220 264, 248 260, 278 257 C 334 255, 362 253, 391 253 C 448 251, 477 249, 505 245 L 505 270 L 50 270 Z"
+                      fill="url(#tradFillGrad)"
+                    />
+
+                    {/* AI area fill */}
+                    <path
+                      clipPath="url(#chartClip)"
+                      d="M 50 270 C 80 262, 122 248, 164 232 C 205 216, 248 196, 278 181 C 318 162, 360 134, 391 117 C 432 96, 475 65, 505 45 L 505 270 L 50 270 Z"
+                      fill="url(#aiFillGrad)"
+                    />
+
+                    {/* Traditional line */}
+                    <path
+                      d="M 50 270 C 107 269, 135 267, 164 266 C 220 264, 248 260, 278 257 C 334 255, 362 253, 391 253 C 448 251, 477 249, 505 245"
+                      fill="none"
+                      stroke="#ffffff"
+                      strokeOpacity="0.25"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeDasharray="600"
+                      strokeDashoffset="600"
+                      className="animate-draw-line"
+                      style={{ animationDelay: '0.6s', animationDuration: '2.5s' }}
+                    />
+
+                    {/* AI line */}
+                    <path
+                      d="M 50 270 C 80 262, 122 248, 164 232 C 205 216, 248 196, 278 181 C 318 162, 360 134, 391 117 C 432 96, 475 65, 505 45"
+                      fill="none"
+                      stroke="url(#aiLineGrad)"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeDasharray="760"
+                      strokeDashoffset="760"
+                      className="animate-draw-line"
+                      style={{ animationDelay: '0.6s', animationDuration: '2.5s' }}
+                    />
+
+                    {/* AI glow */}
+                    <path
+                      d="M 50 270 C 80 262, 122 248, 164 232 C 205 216, 248 196, 278 181 C 318 162, 360 134, 391 117 C 432 96, 475 65, 505 45"
+                      fill="none"
+                      stroke="#8fff00"
+                      strokeWidth="10"
+                      strokeOpacity="0.08"
+                      strokeLinecap="round"
+                      strokeDasharray="760"
+                      strokeDashoffset="760"
+                      className="animate-draw-line"
+                      style={{ animationDelay: '0.6s', animationDuration: '2.5s' }}
+                    />
+
+                    {/* ─ Data point dots + tooltips ─ */}
+
+                    {/* Apr: +9% */}
+                    <circle cx="164" cy="232" r="3.5" fill="#8fff00" opacity="0" className="animate-fade-in" style={{ animationDelay: '3.2s' }}/>
+
+                    {/* Jul: +21% — tooltip */}
+                    <circle cx="278" cy="181" r="3.5" fill="#8fff00" opacity="0" className="animate-fade-in" style={{ animationDelay: '3.2s' }}/>
+                    <g opacity="0" className="animate-fade-in" style={{ animationDelay: '3.2s' }}>
+                      <rect x="240" y="155" width="52" height="20" rx="4" fill="#111" stroke="#8fff00" strokeOpacity="0.3" strokeWidth="0.8"/>
+                      <text x="266" y="169" fill="#8fff00" fontSize="10" fontWeight="700" textAnchor="middle">+21%</text>
+                    </g>
+
+                    {/* Oct: +36% */}
+                    <circle cx="391" cy="117" r="3.5" fill="#8fff00" opacity="0" className="animate-fade-in" style={{ animationDelay: '3.2s' }}/>
+
+                    {/* Dec endpoint AI */}
+                    <circle cx="505" cy="45" r="10" fill="#8fff00" fillOpacity="0.1" opacity="0" className="animate-fade-in animate-pulse-dot" style={{ animationDelay: '3.2s' }}/>
+                    <circle cx="505" cy="45" r="4" fill="#8fff00" opacity="0" className="animate-fade-in" style={{ animationDelay: '3.2s' }}/>
+                    <g opacity="0" className="animate-fade-in" style={{ animationDelay: '3.2s' }}>
+                      <rect x="448" y="23" width="52" height="20" rx="4" fill="#0d1a00" stroke="#8fff00" strokeOpacity="0.5" strokeWidth="1"/>
+                      <text x="474" y="37" fill="#8fff00" fontSize="11" fontWeight="700" textAnchor="middle">+53%</text>
+                    </g>
+
+                    {/* Dec endpoint Traditional */}
+                    <circle cx="505" cy="245" r="3" fill="#ffffff" fillOpacity="0.3" opacity="0" className="animate-fade-in" style={{ animationDelay: '3.2s' }}/>
+                    <text x="485" y="241" fill="#ffffff" fillOpacity="0.25" fontSize="9.5" fontWeight="600" textAnchor="end" opacity="0" className="animate-fade-in" style={{ animationDelay: '3.2s' }}>+6%</text>
+                  </svg>
+                </div>
+
+                {/* Card footer — key stats */}
+                <div className="grid grid-cols-3 border-t border-white/[0.06]">
+                  <div className="flex flex-col items-center justify-center px-4 py-4 gap-1 border-r border-white/[0.06]">
+                    <span className="text-2xl font-bold tracking-tight text-[#8fff00] leading-none tabular-nums">+{heroStat1}%</span>
+                    <span className="text-[11px] text-gray-500 font-medium uppercase tracking-widest">Revenue lift</span>
+                  </div>
+                  <div className="flex flex-col items-center justify-center px-4 py-4 gap-1 border-r border-white/[0.06]">
+                    <span className="text-2xl font-bold tracking-tight text-white leading-none tabular-nums">{heroStat2.toFixed(1)}<span className="text-lg text-gray-400">×</span></span>
+                    <span className="text-[11px] text-gray-500 font-medium uppercase tracking-widest">Industry avg</span>
+                  </div>
+                  <div className="flex flex-col items-center justify-center px-4 py-4 gap-1">
+                    <span className="text-2xl font-bold tracking-tight text-white leading-none tabular-nums">- {heroStat3}<span className="text-lg text-gray-400">%</span></span>
+                    <span className="text-[11px] text-gray-500 font-medium uppercase tracking-widest">Cost reduction</span>
+                  </div>
+                </div>
+              </div>
+              <p className="text-[10px] text-gray-700 mt-2 text-right">Source: McKinsey Global Institute</p>
+            </div>
+
+            {/* Mobile Growth Graph — UNTOUCHED */}
             <div className="sm:hidden mt-11 scroll-animate" data-animation="animate-fade-in-up" data-delay="800">
               <div className="text-center mb-4">
                 <h3 className="text-xl font-bold leading-tight">
@@ -210,80 +447,29 @@ function App() {
                   <span className="text-[#8fff00]">AI</span> <span className="text-white">vs Traditional</span>
                 </h3>
               </div>
-              
               <svg viewBox="0 0 340 150" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
-                {/* Background gradient area */}
                 <defs>
                   <linearGradient id="aiGradient" x1="0%" y1="0%" x2="0%" y2="100%">
                     <stop offset="0%" stopColor="#8fff00" stopOpacity="0.1"/>
                     <stop offset="100%" stopColor="#8fff00" stopOpacity="0"/>
                   </linearGradient>
                 </defs>
-                
-                {/* Horizontal grid */}
                 <line x1="20" y1="130" x2="320" y2="130" stroke="#ffffff12" strokeWidth="1"/>
                 <line x1="20" y1="95" x2="320" y2="95" stroke="#ffffff06" strokeWidth="1" strokeDasharray="3 3"/>
                 <line x1="20" y1="60" x2="320" y2="60" stroke="#ffffff06" strokeWidth="1" strokeDasharray="3 3"/>
                 <line x1="20" y1="25" x2="320" y2="25" stroke="#ffffff06" strokeWidth="1" strokeDasharray="3 3"/>
-                
-                {/* Traditional business line (slow growth with subtle curve) */}
-                <path
-                  d="M 20 120 Q 57 117, 95 113 T 170 107 Q 207 105, 245 103 T 320 99"
-                  fill="none"
-                  stroke="#ffffff"
-                  strokeWidth="2.8"
-                  strokeLinecap="round"
-                  strokeDasharray="330"
-                  strokeDashoffset="330"
-                  className="animate-draw-line"
-                  style={{ animationDelay: '0.4s' }}
-                />
-                
-                {/* AI-powered business line (exponential growth with dynamic curves) */}
-                <path
-                  d="M 20 120 Q 50 110, 95 95 T 170 60 Q 205 43, 245 30 T 320 15"
-                  fill="none"
-                  stroke="#8fff00"
-                  strokeWidth="3.2"
-                  strokeLinecap="round"
-                  strokeDasharray="380"
-                  strokeDashoffset="380"
-                  className="animate-draw-line"
-                  style={{ animationDelay: '0.4s' }}
-                />
-                
-                {/* Glow effect for AI line */}
-                <path
-                  d="M 20 120 Q 50 110, 95 95 T 170 60 Q 205 43, 245 30 T 320 15"
-                  fill="none"
-                  stroke="#8fff00"
-                  strokeWidth="8"
-                  opacity="0.2"
-                  strokeLinecap="round"
-                  strokeDasharray="380"
-                  strokeDashoffset="380"
-                  className="animate-draw-line"
-                  style={{ animationDelay: '0.4s' }}
-                />
-                
-                {/* Fill under AI line */}
-                <path
-                  d="M 20 120 Q 50 110, 95 95 T 170 60 Q 205 43, 245 30 T 320 15 L 320 130 L 20 130 Z"
-                  fill="url(#aiGradient)"
-                />
-                
-                {/* Starting point marker */}
+                <path d="M 20 120 Q 57 117, 95 113 T 170 107 Q 207 105, 245 103 T 320 99" fill="none" stroke="#ffffff" strokeWidth="2.8" strokeLinecap="round" strokeDasharray="330" strokeDashoffset="330" className="animate-draw-line" style={{ animationDelay: '0.4s' }}/>
+                <path d="M 20 120 Q 50 110, 95 95 T 170 60 Q 205 43, 245 30 T 320 15" fill="none" stroke="#8fff00" strokeWidth="3.2" strokeLinecap="round" strokeDasharray="380" strokeDashoffset="380" className="animate-draw-line" style={{ animationDelay: '0.4s' }}/>
+                <path d="M 20 120 Q 50 110, 95 95 T 170 60 Q 205 43, 245 30 T 320 15" fill="none" stroke="#8fff00" strokeWidth="8" opacity="0.2" strokeLinecap="round" strokeDasharray="380" strokeDashoffset="380" className="animate-draw-line" style={{ animationDelay: '0.4s' }}/>
+                <path d="M 20 120 Q 50 110, 95 95 T 170 60 Q 205 43, 245 30 T 320 15 L 320 130 L 20 130 Z" fill="url(#aiGradient)"/>
                 <circle cx="20" cy="120" r="4" fill="#ffffff" opacity="0.7"/>
-                
-                {/* End point - Traditional (appears after line animation) */}
                 <circle cx="320" cy="99" r="3.5" fill="#ffffff" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}/>
                 <text x="260" y="93" fill="#ffffff" fontSize="11" fontWeight="600" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}>+45%</text>
-                
-                {/* End point - AI (appears after line animation) */}
                 <circle cx="320" cy="15" r="4.5" fill="#8fff00" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}/>
                 <text x="255" y="12" fill="#8fff00" fontSize="12" fontWeight="700" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}>+285%</text>
               </svg>
             </div>
+
           </div>
         </div>
       </section>
@@ -396,13 +582,16 @@ function App() {
 
             {/* AI Websites - Full width card */}
             <div className="md:col-span-2 bg-[#8fff00] rounded-xl p-5 sm:p-8 flex flex-col sm:flex-row gap-6 sm:gap-10 items-start">
-              <div className="flex-shrink-0">
-                <div className="w-10 sm:w-14 h-10 sm:h-14 bg-black/10 rounded-lg flex items-center justify-center">
-                  <Globe className="w-5 sm:w-7 h-5 sm:h-7 text-black" />
+              <div className="hidden sm:flex flex-shrink-0">
+                <div className="w-14 h-14 bg-black/10 rounded-lg flex items-center justify-center">
+                  <Globe className="w-7 h-7 text-black" />
                 </div>
               </div>
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-3 sm:mb-4">
+                  <div className="sm:hidden w-10 h-10 bg-black/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Globe className="w-5 h-5 text-black" />
+                  </div>
                   <h3 className="text-lg sm:text-2xl font-bold text-black" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                     AI Websites
                   </h3>
