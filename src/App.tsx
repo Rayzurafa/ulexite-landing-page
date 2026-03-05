@@ -230,9 +230,9 @@ function App() {
                 </span>
               </h1>
 
-              {/* Mobile description — unchanged */}
-              <p className="sm:hidden text-base text-gray-400 mb-8 leading-[1.8] animate-fade-in animation-delay-400">
-                Most businesses know AI could help them. The hard part is figuring out where to start, what actually works, and who to trust. We cut through that noise. We look at your operations, identify exactly where time and money are being lost, and build practical AI tools that slot right into how you already work. No massive overhaul, no steep learning curve. Just real results, measured in revenue and hours saved, within the first few months.
+              {/* Mobile description — shorter */}
+              <p className="sm:hidden text-base text-gray-400 mb-6 leading-[1.8] animate-fade-in animation-delay-400">
+                Most businesses know AI could help them. The hard part is knowing where to start and who to trust. We find exactly where time and money are slipping and build practical AI tools that fit into how you already work. Real results, within months.
               </p>
 
               {/* Desktop description — shorter text, slightly bigger */}
@@ -240,7 +240,7 @@ function App() {
                 Most businesses know AI could help them. The hard part is knowing where to start and who to trust. We map your operations, find exactly where time and money are slipping, and build AI tools that slot into how you already work. No massive overhaul, no steep learning curve. Real results, measured in revenue and hours saved, within days.
               </p>
 
-              <div className="animate-fade-in animation-delay-600">
+              <div className="hidden sm:block animate-fade-in animation-delay-600">
                 <button
                   onClick={() => document.getElementById('booking-section')?.scrollIntoView({ behavior: 'smooth' })}
                   className="bg-[#8fff00] text-black px-7 sm:px-9 py-3.5 rounded-lg font-semibold text-base sm:text-lg hover:bg-[#7ae600] transition-all flex items-center gap-2.5 group"
@@ -439,14 +439,22 @@ function App() {
               <p className="text-[10px] text-gray-700 mt-2 text-right">Source: McKinsey Global Institute</p>
             </div>
 
-            {/* Mobile Growth Graph — UNTOUCHED */}
-            <div className="sm:hidden mt-11 scroll-animate" data-animation="animate-fade-in-up" data-delay="800">
+            {/* Mobile Growth Graph */}
+            <div className="sm:hidden mt-5 scroll-animate" data-animation="animate-fade-in-up" data-delay="800">
               <div className="text-center mb-4">
                 <h3 className="text-xl font-bold leading-tight">
                   <span className="text-white">Yearly Business Growth:</span><br />
                   <span className="text-[#8fff00]">AI</span> <span className="text-white">vs Traditional</span>
                 </h3>
               </div>
+              {/*
+                McKinsey data: AI Jan=0%→Dec=53%, Trad Jan=0%→Dec=6%
+                viewBox 340×150, baseline y=130, top y=15, max=60%
+                1% = (130-15)/60 = 1.917px
+                AI:   0%=130, 9%=113, 21%=90, 36%=61, 53%=28
+                Trad: 0%=130, 1%=128, 3%=124, 4%=122, 6%=118
+                x: Jan=20, Apr=95, Jul=170, Oct=245, Dec=320
+              */}
               <svg viewBox="0 0 340 150" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                   <linearGradient id="aiGradient" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -454,19 +462,25 @@ function App() {
                     <stop offset="100%" stopColor="#8fff00" stopOpacity="0"/>
                   </linearGradient>
                 </defs>
-                <line x1="20" y1="130" x2="320" y2="130" stroke="#ffffff12" strokeWidth="1"/>
                 <line x1="20" y1="95" x2="320" y2="95" stroke="#ffffff06" strokeWidth="1" strokeDasharray="3 3"/>
                 <line x1="20" y1="60" x2="320" y2="60" stroke="#ffffff06" strokeWidth="1" strokeDasharray="3 3"/>
                 <line x1="20" y1="25" x2="320" y2="25" stroke="#ffffff06" strokeWidth="1" strokeDasharray="3 3"/>
-                <path d="M 20 120 Q 57 117, 95 113 T 170 107 Q 207 105, 245 103 T 320 99" fill="none" stroke="#ffffff" strokeWidth="2.8" strokeLinecap="round" strokeDasharray="330" strokeDashoffset="330" className="animate-draw-line" style={{ animationDelay: '0.4s' }}/>
-                <path d="M 20 120 Q 50 110, 95 95 T 170 60 Q 205 43, 245 30 T 320 15" fill="none" stroke="#8fff00" strokeWidth="3.2" strokeLinecap="round" strokeDasharray="380" strokeDashoffset="380" className="animate-draw-line" style={{ animationDelay: '0.4s' }}/>
-                <path d="M 20 120 Q 50 110, 95 95 T 170 60 Q 205 43, 245 30 T 320 15" fill="none" stroke="#8fff00" strokeWidth="8" opacity="0.2" strokeLinecap="round" strokeDasharray="380" strokeDashoffset="380" className="animate-draw-line" style={{ animationDelay: '0.4s' }}/>
-                <path d="M 20 120 Q 50 110, 95 95 T 170 60 Q 205 43, 245 30 T 320 15 L 320 130 L 20 130 Z" fill="url(#aiGradient)"/>
-                <circle cx="20" cy="120" r="4" fill="#ffffff" opacity="0.7"/>
-                <circle cx="320" cy="99" r="3.5" fill="#ffffff" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}/>
-                <text x="260" y="93" fill="#ffffff" fontSize="11" fontWeight="600" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}>+45%</text>
-                <circle cx="320" cy="15" r="4.5" fill="#8fff00" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}/>
-                <text x="255" y="12" fill="#8fff00" fontSize="12" fontWeight="700" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}>+285%</text>
+                {/* Traditional line */}
+                <path d="M 20 130 C 55 130, 75 129, 95 128 C 128 127, 150 125, 170 124 C 205 123, 225 122, 245 122 C 275 121, 298 119, 320 118" fill="none" stroke="#ffffff" strokeWidth="2.8" strokeLinecap="round" strokeDasharray="330" strokeDashoffset="330" className="animate-draw-line" style={{ animationDelay: '0.4s' }}/>
+                {/* AI line */}
+                <path d="M 20 130 C 55 124, 65 118, 95 113 C 128 107, 152 96, 170 90 C 200 79, 226 68, 245 61 C 272 51, 298 36, 320 28" fill="none" stroke="#8fff00" strokeWidth="3.2" strokeLinecap="round" strokeDasharray="420" strokeDashoffset="420" className="animate-draw-line" style={{ animationDelay: '0.4s' }}/>
+                {/* AI glow */}
+                <path d="M 20 130 C 55 124, 65 118, 95 113 C 128 107, 152 96, 170 90 C 200 79, 226 68, 245 61 C 272 51, 298 36, 320 28" fill="none" stroke="#8fff00" strokeWidth="8" opacity="0.2" strokeLinecap="round" strokeDasharray="420" strokeDashoffset="420" className="animate-draw-line" style={{ animationDelay: '0.4s' }}/>
+                {/* AI area fill */}
+                <path d="M 20 130 C 55 124, 65 118, 95 113 C 128 107, 152 96, 170 90 C 200 79, 226 68, 245 61 C 272 51, 298 36, 320 28 L 320 130 L 20 130 Z" fill="url(#aiGradient)"/>
+                {/* Start dot */}
+                <circle cx="20" cy="130" r="4" fill="#ffffff" opacity="0.7"/>
+                {/* Trad endpoint */}
+                <circle cx="320" cy="118" r="3.5" fill="#ffffff" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}/>
+                <text x="300" y="113" fill="#ffffff" fontSize="11" fontWeight="600" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}>+6%</text>
+                {/* AI endpoint */}
+                <circle cx="320" cy="28" r="4.5" fill="#8fff00" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}/>
+                <text x="263" y="25" fill="#8fff00" fontSize="12" fontWeight="700" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}>+53%</text>
               </svg>
             </div>
 
