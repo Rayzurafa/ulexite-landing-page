@@ -223,7 +223,7 @@ function App() {
                 <span className="text-[#8fff00] text-xs sm:text-sm font-semibold tracking-wide">AI Implementation Made Simple</span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-[3.4rem] font-bold mb-5 sm:mb-6 leading-[1.08] tracking-tight animate-fade-in-up animation-delay-200">
+              <h1 className="text-4xl sm:text-5xl lg:text-[3.9rem] font-bold mb-5 sm:mb-6 leading-[1.08] tracking-tight animate-fade-in-up animation-delay-200">
                 The AI Department{' '}
                 <span className="bg-gradient-to-r from-[#8fff00] via-[#a0ff40] to-[#8fff00] bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
                   Your Business Has Been Missing.
@@ -237,7 +237,7 @@ function App() {
 
               {/* Desktop description — shorter text, slightly bigger */}
               <p className="hidden sm:block text-[1.15rem] text-gray-400 mb-10 leading-[1.8] animate-fade-in animation-delay-400">
-                Most businesses know AI could help them. The hard part is knowing where to start and who to trust. We map your operations, find exactly where time and money are slipping, and build AI tools that slot into how you already work. No massive overhaul, no steep learning curve. Real results, measured in revenue and hours saved, within months.
+                Most businesses know AI could help them. The hard part is knowing where to start and who to trust. We map your operations, find exactly where time and money are slipping, and build AI tools that slot into how you already work. No massive overhaul, no steep learning curve. Real results, measured in revenue and hours saved, within days.
               </p>
 
               <div className="animate-fade-in animation-delay-600">
