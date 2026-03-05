@@ -223,7 +223,16 @@ function App() {
                 <span className="text-[#8fff00] text-xs sm:text-sm font-semibold tracking-wide">AI Implementation Made Simple</span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-[3.9rem] font-bold mb-5 sm:mb-6 leading-[1.08] tracking-tight animate-fade-in-up animation-delay-200">
+              {/* Mobile h1 — 2 lines */}
+              <h1 className="sm:hidden text-4xl font-bold mb-5 leading-[1.08] tracking-tight animate-fade-in-up animation-delay-200">
+                The AI Department{' '}
+                <span className="bg-gradient-to-r from-[#8fff00] via-[#a0ff40] to-[#8fff00] bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
+                  Your Business Needs.
+                </span>
+              </h1>
+
+              {/* Desktop h1 — unchanged */}
+              <h1 className="hidden sm:block text-5xl lg:text-[3.9rem] font-bold mb-6 leading-[1.08] tracking-tight animate-fade-in-up animation-delay-200">
                 The AI Department{' '}
                 <span className="bg-gradient-to-r from-[#8fff00] via-[#a0ff40] to-[#8fff00] bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
                   Your Business Has Been Missing.
@@ -235,11 +244,11 @@ function App() {
                 We help traditional businesses actually use AI to cut costs and boost revenue. No hype, no complicated tech jargon, just practical tools that seamlessly integrate with your existing workflow and deliver measurable results.
               </p>
 
-              {/* Mobile CTA button */}
+              {/* Mobile CTA button — full width */}
               <div className="sm:hidden mb-8 animate-fade-in animation-delay-600">
                 <button
                   onClick={() => document.getElementById('booking-section')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="bg-[#8fff00] text-black px-7 py-3.5 rounded-lg font-semibold text-base hover:bg-[#7ae600] transition-all flex items-center gap-2.5 group"
+                  className="w-full justify-center bg-[#8fff00] text-black px-7 py-3.5 rounded-lg font-semibold text-base hover:bg-[#7ae600] transition-all flex items-center gap-2.5 group"
                 >
                   Book Your Free Consultation
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -488,7 +497,7 @@ function App() {
                 <circle cx="20" cy="130" r="4" fill="#ffffff" opacity="0.7"/>
                 {/* Trad endpoint */}
                 <circle cx="320" cy="118" r="3.5" fill="#ffffff" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}/>
-                <text x="263" y="113" fill="#ffffff" fontSize="11" fontWeight="600" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}>+6%</text>
+                <text x="278" y="110" fill="#ffffff" fontSize="11" fontWeight="600" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}>+6%</text>
                 {/* AI endpoint */}
                 <circle cx="320" cy="28" r="4.5" fill="#8fff00" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}/>
                 <text x="263" y="25" fill="#8fff00" fontSize="12" fontWeight="700" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}>+53%</text>
