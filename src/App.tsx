@@ -1,4 +1,4 @@
-import { ArrowRight, Sparkles, MessageCircle, Lightbulb, Handshake, ArrowRight as ArrowForward, Bot, FileText, TrendingUp, Search, ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { ArrowRight, Sparkles, MessageCircle, Lightbulb, Handshake, ArrowRight as ArrowForward, Bot, FileText, TrendingUp, Search, ChevronLeft, ChevronRight, X, Globe } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 function App() {
@@ -393,6 +393,26 @@ function App() {
                 </div>
               );
             })}
+
+            {/* AI Websites - Full width card */}
+            <div className="md:col-span-2 bg-[#8fff00] rounded-xl p-5 sm:p-8 flex flex-col sm:flex-row gap-6 sm:gap-10 items-start">
+              <div className="flex-shrink-0">
+                <div className="w-10 sm:w-14 h-10 sm:h-14 bg-black/10 rounded-lg flex items-center justify-center">
+                  <Globe className="w-5 sm:w-7 h-5 sm:h-7 text-black" />
+                </div>
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center gap-3 mb-3 sm:mb-4">
+                  <h3 className="text-lg sm:text-2xl font-bold text-black" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                    AI Websites
+                  </h3>
+                  <span className="bg-black text-[#8fff00] text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wide">Hot Right Now</span>
+                </div>
+                <p className="text-sm sm:text-base text-black/80 leading-relaxed sm:max-w-4xl">
+                  The internet's buying environment has changed. AI compressed attention spans — fewer casual browsers, more decision-ready buyers landing with their credit card half out. When they hit your site, you have seconds. If it's slow, vague, or generic, they're gone and so is the sale. We build and redesign websites specifically for this new reality: fast, clear, conversion-focused sites that establish trust instantly and turn visitors into buyers before they hit the back button. Not just a website. Conversion infrastructure.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
