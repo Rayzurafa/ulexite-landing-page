@@ -230,10 +230,21 @@ function App() {
                 </span>
               </h1>
 
-              {/* Mobile description — slightly longer */}
+              {/* Mobile description */}
               <p className="sm:hidden text-base text-gray-400 mb-6 leading-[1.8] animate-fade-in animation-delay-400">
-                Most businesses know AI could help them. The hard part is knowing where to start and who to trust. We look at your operations, find exactly where time and money are slipping, and build AI tools that slot right into how you already work. No overhaul required. Real results, measured in revenue and hours saved, within months.
+                We help traditional businesses actually use AI to cut costs and boost revenue. No hype, no complicated tech jargon, just practical tools that seamlessly integrate with your existing workflow and deliver measurable results.
               </p>
+
+              {/* Mobile CTA button */}
+              <div className="sm:hidden mb-8 animate-fade-in animation-delay-600">
+                <button
+                  onClick={() => document.getElementById('booking-section')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="bg-[#8fff00] text-black px-7 py-3.5 rounded-lg font-semibold text-base hover:bg-[#7ae600] transition-all flex items-center gap-2.5 group"
+                >
+                  Book Your Free Consultation
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
 
               {/* Desktop description — shorter text, slightly bigger */}
               <p className="hidden sm:block text-[1.15rem] text-gray-400 mb-10 leading-[1.8] animate-fade-in animation-delay-400">
