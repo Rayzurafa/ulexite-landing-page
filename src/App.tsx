@@ -230,9 +230,9 @@ function App() {
                 </span>
               </h1>
 
-              {/* Mobile description — shorter */}
+              {/* Mobile description — slightly longer */}
               <p className="sm:hidden text-base text-gray-400 mb-6 leading-[1.8] animate-fade-in animation-delay-400">
-                Most businesses know AI could help them. The hard part is knowing where to start and who to trust. We find exactly where time and money are slipping and build practical AI tools that fit into how you already work. Real results, within months.
+                Most businesses know AI could help them. The hard part is knowing where to start and who to trust. We look at your operations, find exactly where time and money are slipping, and build AI tools that slot right into how you already work. No overhaul required. Real results, measured in revenue and hours saved, within months.
               </p>
 
               {/* Desktop description — shorter text, slightly bigger */}
@@ -477,7 +477,7 @@ function App() {
                 <circle cx="20" cy="130" r="4" fill="#ffffff" opacity="0.7"/>
                 {/* Trad endpoint */}
                 <circle cx="320" cy="118" r="3.5" fill="#ffffff" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}/>
-                <text x="300" y="113" fill="#ffffff" fontSize="11" fontWeight="600" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}>+6%</text>
+                <text x="263" y="113" fill="#ffffff" fontSize="11" fontWeight="600" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}>+6%</text>
                 {/* AI endpoint */}
                 <circle cx="320" cy="28" r="4.5" fill="#8fff00" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}/>
                 <text x="263" y="25" fill="#8fff00" fontSize="12" fontWeight="700" opacity="0" className="animate-fade-in" style={{ animationDelay: '2.4s' }}>+53%</text>
