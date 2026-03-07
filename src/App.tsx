@@ -151,9 +151,10 @@ function App() {
     },
     {
       id: 3,
-      icon: Search,
-      title: "Knowledge Base",
-      desc: "Search your entire company's knowledge instantly. AI finds answers from docs, emails, chat history, and databases. Ask questions in plain English and get accurate results in seconds. No more digging through folders or Slack threads."
+      icon: Globe,
+      title: "AI Websites",
+      tag: "Hot Right Now",
+      desc: "Fewer browsers, more buyers with cards out. When they land on your site you have seconds. We build conversion-focused AI websites that establish trust instantly and turn visitors into paying customers. Not just a website — conversion infrastructure."
     }
   ];
 
@@ -605,6 +606,9 @@ function App() {
                     <h3 className="text-lg sm:text-2xl font-bold text-black" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                       {solution.title}
                     </h3>
+                    {solution.tag && (
+                      <span className="bg-black text-[#8fff00] text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wide whitespace-nowrap">{solution.tag}</span>
+                    )}
                   </div>
 
                   <p className="text-sm sm:text-base text-black/80 leading-relaxed">
@@ -614,28 +618,6 @@ function App() {
               );
             })}
 
-            {/* AI Websites - Full width card */}
-            <div className="md:col-span-2 bg-[#8fff00] rounded-xl p-5 sm:p-8 flex flex-col sm:flex-row gap-6 sm:gap-10 items-start">
-              <div className="hidden sm:flex flex-shrink-0">
-                <div className="w-14 h-14 bg-black/10 rounded-lg flex items-center justify-center">
-                  <Globe className="w-7 h-7 text-black" />
-                </div>
-              </div>
-              <div className="flex-1">
-                <div className="flex items-center gap-3 mb-3 sm:mb-4">
-                  <div className="sm:hidden w-10 h-10 bg-black/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Globe className="w-5 h-5 text-black" />
-                  </div>
-                  <h3 className="text-lg sm:text-2xl font-bold text-black" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                    AI Websites
-                  </h3>
-                  <span className="bg-black text-[#8fff00] text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wide">Hot Right Now</span>
-                </div>
-                <p className="text-sm sm:text-base text-black/80 leading-relaxed sm:max-w-4xl">
-                  The internet's buying environment has changed. AI compressed attention spans, fewer casual browsers, more decision-ready buyers landing with their credit card half out. When they hit your site, you have seconds. If it's slow, vague, or generic, they're gone and so is the sale. We build and redesign websites specifically for this new reality: fast, clear, conversion-focused sites that establish trust instantly and turn visitors into buyers before they hit the back button. Not just a website. Conversion infrastructure.
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
