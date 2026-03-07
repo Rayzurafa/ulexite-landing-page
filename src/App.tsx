@@ -154,7 +154,7 @@ function App() {
       icon: Globe,
       title: "AI Websites",
       tag: "Hot Right Now",
-      desc: "Fewer browsers, more buyers with cards out. When they land on your site you have seconds. We build conversion-focused AI websites that establish trust instantly and turn visitors into paying customers. Not just a website — conversion infrastructure."
+      desc: "Fewer browsers, more buyers with cards out. When they land on your site you have seconds. We build conversion-focused AI websites that establish trust instantly and turn visitors into paying customers. Not just a website, but conversion infrastructure."
     }
   ];
 
